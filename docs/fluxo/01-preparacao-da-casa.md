@@ -1,8 +1,8 @@
-# Prompt 1 — Preparação da Casa (Spec Kit) · v6
+# Prompt 1 — Preparação da Casa (Spec Kit) · v7
 
 > Rode **uma vez por projeto** (e de novo só quando quiser reinstalar ou atualizar o Spec Kit).
 > Agente único, no Traycer, na pasta raiz do repositório do cliente.
-> Antes de rodar: instale o fluxo com o `04-atualizar-fluxo.md` (guia `docs/guias/09-manutencao-do-fluxo.md`). Numa instalação nova, o próprio 04 encadeia esta preparação.
+> Normalmente é o **prompt mestre** (`04-atualizar-fluxo.md`) quem chama este arquivo, inteiro ou só as fases pendentes. **Chamado pelo mestre:** não crie branch (use a dele), não abra PR na Fase 6 (só complete o `preparacao.md`) e pule a Fase 7: o mestre continua.
 > Só depois que o PR desta preparação for mesclado é que o **Condutor** (`02-condutor.md`) pode rodar.
 > Siga `docs/fluxo/00-convencoes.md` para nomes, status e labels.
 
