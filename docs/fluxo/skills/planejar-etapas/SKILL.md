@@ -49,6 +49,22 @@ Siga `docs/fluxo/00-convencoes.md` (estrutura, nomes, labels) e use `docs/guias/
 
 Para cada domínio presente (autenticação, pagamentos, uploads…), mostre o menu de `references/checklists-de-dominio.md` e deixe o André escolher o que entra.
 
+### A1.1 Projeto novo (sem código)
+Quando `.specify/memory/projeto.md` tem `tipo: novo`, a primeira spec do roadmap é sempre:
+
+```
+[INFRA] Spec 001 — Fundação do projeto        M · Infra      (projeto [XXX] Fundação, milestone Alpha)
+  US previstas:
+  - A aplicação sobe localmente com um comando, na porta 3000, com o banco no Docker
+  - Lint, typecheck e testes rodam com um comando cada, e o CI roda os três em todo PR
+  - O seed cria o usuário fixo de teste e dados mínimos de exemplo
+  - O ambiente de teste do Condutor funciona: aplicação em outra porta (3001) e banco de teste recriado como cópia do banco da develop
+  Critérios de aceite:
+  - O bloco `projeto` do AGENTS.md tem todos os comandos e o usuário de teste (nenhum "a definir")
+  - O `projeto.md` tem a seção Ambiente local completa, a Verificação com resultados e a linha de base, e não tem mais `tipo: novo`
+```
+Todas as outras specs do roadmap ficam *blocked by* a Spec 001.
+
 ### A2. Decisões pendentes
 Cada uma com pergunta, opção recomendada e motivo.
 

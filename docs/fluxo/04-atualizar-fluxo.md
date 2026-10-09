@@ -1,4 +1,4 @@
-# Prompt 4 — Instalar ou atualizar o fluxo (v5)
+# Prompt 4 — Instalar ou atualizar o fluxo (v6)
 
 > Rode num **agente novo** do Traycer, na pasta principal de um repositório de cliente, para:
 > - **instalar** o fluxo num projeto que ainda não tem `docs/fluxo/`; ou
@@ -18,6 +18,7 @@ Você copia `docs/guias/` e `docs/fluxo/` do repositório central para este proj
 
 ## Regras
 1. Árvore limpa antes de começar; nada é descartado.
+   **Repositório vazio** (sem nenhum commit): crie um `README.md` com o nome do projeto, faça o commit `chore: início do repositório` na `main` e publique (`git push -u origin main`) antes de seguir.
 2. Trabalhe na branch `chore/fluxo-v<versão>`, criada a partir de `origin/develop`. Se não existir `develop`, crie-a a partir da `main` e publique (`git branch develop origin/main && git push -u origin develop`).
 3. O merge é do André.
 

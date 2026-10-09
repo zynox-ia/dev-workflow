@@ -1,4 +1,4 @@
-# Prompt 1 — Preparação da Casa (Spec Kit) · v5
+# Prompt 1 — Preparação da Casa (Spec Kit) · v6
 
 > Rode **uma vez por projeto** (e de novo só quando quiser reinstalar ou atualizar o Spec Kit).
 > Agente único, no Traycer, na pasta raiz do repositório do cliente.
@@ -68,6 +68,8 @@ grep -q 'dev-workflow:inicio' AGENTS.md  # bloco do fluxo instalado pelo 04
 git fetch origin
 git checkout -b chore/speckit-setup origin/develop
 ```
+
+**Projeto novo?** Se não há manifesto (`package.json`, `pyproject.toml`, `composer.json`, `go.mod`…) nem código de aplicação, este é um **projeto novo**: registre `tipo: novo` no `preparacao.md` e siga as variantes marcadas **[novo]** nas fases abaixo. O código, os comandos e o ambiente nascem na primeira spec (`[INFRA] Spec 001 — Fundação do projeto`), feita pelo Condutor.
 
 **Portão:** repositório git, árvore limpa, Python ≥ 3.11, `uv` disponível, `origin/develop` existe, branch criada a partir dela.
 
@@ -177,6 +179,8 @@ Invoque **`/speckit-constitution`** passando apenas princípios que já são ver
 Não adicione princípios sem evidência.
 ```
 
+**[novo] Sem código, a evidência são as decisões do André.** Pergunte, de uma vez e cada uma com opção recomendada e motivo: (1) linguagem e framework; (2) banco de dados; (3) onde roda em produção; (4) ferramentas de teste, lint e typecheck; (5) biblioteca de interface ou design system. Registre as respostas em `docs/roadmap/decisoes.md` (data, decisão, motivo, alternativas) e invoque `/speckit-constitution` com os princípios que decorrem delas, citando `decisoes.md` como evidência, mais os princípios de escopo e de testes acima.
+
 **Portão:**
 - `.specify/memory/constitution.md` existe;
 - sem marcadores de template: `grep -nE '\[[A-Z_]+\]' .specify/memory/constitution.md` não retorna nada.
@@ -186,6 +190,8 @@ Commit: `docs: constituição do projeto (Spec Kit)`.
 ---
 
 ## Fase 4 — Comandos, linha de base e ambiente local
+
+**[novo] Projeto sem código:** pule 4.1 a 4.4. Preencha o bloco `projeto` do `AGENTS.md` com a linha *Projeto* (o que o sistema vai fazer e a stack decidida na Fase 3), `Usuário de teste: a definir (Spec 001)` e, em cada linha de *Comandos*, `a definir (Spec 001)`. No `projeto.md`, escreva `tipo: novo` logo abaixo de `branch_base: develop`, a seção *Verificação* com "ainda não há código" e a seção *Ambiente local* só com as portas (3000, 3001, 3002) e `a definir (Spec 001)` nas demais linhas. Siga para 4.5.
 
 ### 4.1 Identifique os comandos
 A partir dos scripts do manifesto (`package.json`, `Makefile`, `pyproject.toml`…) e do CI, identifique o comando de: **instalar dependências**, **lint**, **typecheck**, **testes**.
@@ -271,7 +277,7 @@ O que sobrar no `CLAUDE.md` além do import passa pela mesma regra da Fase 1: s�
 
 **Portão:**
 ```bash
-sed -n '/<!-- projeto:inicio/,/<!-- projeto:fim -->/p' AGENTS.md | grep -c '<comando>\|<porta>\|<Uma linha\|<linguagem\|<Regras curtas\|<e-mail'   # 0 (nenhum marcador do modelo)
+sed -n '/<!-- projeto:inicio/,/<!-- projeto:fim -->/p' AGENTS.md | grep -c '<comando>\|<porta>\|<Uma linha\|<linguagem\|<Regras curtas\|<e-mail'   # 0 (nenhum marcador do modelo; no projeto novo, "a definir (Spec 001)" é aceito)
 grep -q 'dev-workflow:inicio' AGENTS.md && grep -q 'dev-workflow:fim' AGENTS.md
 test "$(wc -l < AGENTS.md)" -lt 120
 grep -qxF '@AGENTS.md' CLAUDE.md
@@ -328,7 +334,7 @@ Complete o `preparacao.md` com o log de todas as fases e responda ao humano com 
 ## Fase 7 — Continuar
 1. Diga ao André: `PR da preparação aberto: <link>. Faça o merge e me responda "mesclei".` e espere.
 2. Com `mesclei`: confira o merge, `git checkout develop && git pull --ff-only origin develop`.
-3. Sem `docs/roadmap/ROADMAP.md`: siga a skill `docs/fluxo/skills/planejar-etapas/SKILL.md`, modo **A — Planejar** (sistema novo) ou **C — Assumir** (sistema com código), até o André aprovar e mesclar o roadmap.
+3. Sem `docs/roadmap/ROADMAP.md`: siga a skill `docs/fluxo/skills/planejar-etapas/SKILL.md`, modo **A — Planejar** (sistema novo) ou **C — Assumir** (sistema com código), até o André aprovar e mesclar o roadmap. **[novo]:** a primeira spec é sempre `[INFRA] Spec 001 — Fundação do projeto` (regra do modo A); mova-a para **Ready** com o ok do André.
 4. Termine com:
    ```
    ✅ Casa pronta. Para trabalhar, num agente novo:

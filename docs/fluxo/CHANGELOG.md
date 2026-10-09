@@ -3,6 +3,12 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) · Versão: [SemVer](https://semver.org/lang/pt-BR/).
 Cada versão lista também a **ação necessária nos projetos**, quando houver.
 
+## [2.1.0] — 2026-10-09
+### Adicionado
+- **Projeto novo (repositório sem código).** O 04 inicia um repositório vazio (README + commit na `main`). A preparação (v6) detecta `tipo: novo`: a constituição sai das decisões do André (stack, banco, hospedagem, testes, interface, registradas em `decisoes.md`), e comandos e ambiente ficam "a definir (Spec 001)". O `planejar-etapas` sempre abre o roadmap com `[INFRA] Spec 001 — Fundação do projeto`, que entrega a aplicação rodando, CI, seed com usuário de teste e o ambiente de teste, e preenche o `AGENTS.md` e o `projeto.md`. O Condutor (v4) começa só por ela.
+### Ação necessária nos projetos
+- Nenhuma nos projetos existentes (rodar o 04 quando quiser).
+
 ## [2.0.0] — 2026-10-09
 ### Alterado (incompatível)
 - **Condutor no lugar de Coordenador + 3 Diretores.** Um agente, o 00 Condutor (`02-condutor.md`), leva **uma issue por vez**. Ao começar cada issue, monta o **time inteiro** (um agente por papel da trilha), passa o bastão em sequência e, ao fim da issue, arquiva o time; a próxima issue ganha um time novo. Saem `02-diretor.md` e `03-coordenador.md`.
