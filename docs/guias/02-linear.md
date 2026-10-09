@@ -7,7 +7,7 @@ O Linear é a fonte da verdade do trabalho: o que existe, em que estado está e 
 ```
 Workspace
 └── Time ............ 1 cliente/sistema = 1 repositório           Bruno CRM (BRU)
-    └── Projeto ..... 1 capacidade do produto                     BRU · Gestão de clientes
+    └── Projeto ..... 1 capacidade do produto                     [BRU] Gestão de clientes
         ├── Milestones  Alpha · Beta · GA
         └── Issue pai ... 1 spec do Spec Kit                      [FEAT] Spec 003 — Cadastro e listagem de clientes
             └── Sub-issues  fases e user stories do tasks.md      [FEAT] Spec 003 US1 Cliente é cadastrado com nome e telefone
@@ -16,7 +16,7 @@ Workspace
 | Nível | O que representa | Regra de tamanho |
 |---|---|---|
 | **Time** | Um cliente ou sistema, ligado a um repositório. Tem status, labels de domínio, estimativas e automações próprios | — |
-| **Projeto** | Uma capacidade do produto com começo e fim, nomeada com o identificador do time (ex.: "BRU · Gestão de clientes", "BRU · Faturamento"). Status: Planned → In Progress (o ativo) → Completed (GA) | Semanas |
+| **Projeto** | Uma capacidade do produto com começo e fim, nomeada com o identificador do time (ex.: "[BRU] Gestão de clientes", "[BRU] Faturamento"). Status: Planned → In Progress (o ativo) → Completed (GA) | Semanas |
 | **Milestone** | Um portão de maturidade dentro do projeto | Sempre Alpha, Beta, GA |
 | **Issue pai (spec)** | Uma especificação do Spec Kit: um pedaço entregável da capacidade | Poucos dias; até ~5 user stories |
 | **Sub-issue** | Uma fase ou user story do `tasks.md` daquela spec | Horas |

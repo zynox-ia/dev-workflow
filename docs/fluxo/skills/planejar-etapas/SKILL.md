@@ -26,7 +26,7 @@ Siga `docs/fluxo/00-convencoes.md` (estrutura, nomes, labels) e use `docs/guias/
 **Unidades e tamanhos:**
 | Unidade no Linear | Representa | Tamanho saudável |
 |---|---|---|
-| Projeto | Uma capacidade (`BRU · Gestão de clientes`); nunca um tema transversal como segurança ou qualidade | Semanas; 2–6 specs |
+| Projeto | Uma capacidade (`[BRU] Gestão de clientes`); nunca um tema transversal como segurança ou qualidade | Semanas; 2–6 specs |
 | Milestone | Alpha · Beta · GA | — |
 | Issue pai | Uma spec (`[FEAT] Spec NNN — <capacidade>`); obrigatória para M/L e todo `[SECURITY]` | Poucos dias; até ~5 user stories; estimativa M ou L |
 | Issue avulsa | Bug, hotfix, ou mudança XS/S (exceto `[SECURITY]`) | Horas |
@@ -56,13 +56,13 @@ Cada uma com pergunta, opção recomendada e motivo.
 Na ordem padrão, no formato:
 
 ```
-Projeto: BRU · Fundação                            (depende de: —)
+Projeto: [BRU] Fundação                            (depende de: —)
   Objetivo: ... · Critério de pronto: ...
   Alpha: login e deploy no ar
     [INFRA] Spec 001 — Ambiente, CI e deploy               M · Infra
     [SECURITY] Spec 002 — Login com e-mail e senha         M · Autenticação   blocked by Spec 001
   Beta / GA: ...
-Projeto: BRU · Gestão de clientes                  (depende de: BRU · Fundação)
+Projeto: [BRU] Gestão de clientes                  (depende de: [BRU] Fundação)
   Alpha: fluxo de ponta a ponta
     [FEAT] Spec 003 — Cadastro e listagem de clientes      M · Clientes
       US previstas: Cliente é cadastrado com nome e telefone · Lista pode ser filtrada por etapa
@@ -76,7 +76,7 @@ Para cada spec: título no padrão, estimativa (M/L), labels de domínio, bloque
 
 ### A4. Criar no Linear (só após aprovação)
 1. **Labels de domínio** do time que ainda não existem.
-2. **Projetos** (a partir do template com Alpha, Beta e GA), com nome `<IDENTIFICADOR> · <capacidade>`, status `Planned` (o ativo em `In Progress`) e objetivo, critério de pronto e fora de escopo na descrição. **Dependência entre projetos:** o MCP do Linear não cria essa relação. Escreva `Depende de: <Projeto>` na primeira linha da descrição do projeto e no `ROADMAP.md`, e inclua na resposta final a lista para o André criar no Linear (no projeto, *Dependencies* → *Blocked by*).
+2. **Projetos** (a partir do template com Alpha, Beta e GA), com nome `[<IDENTIFICADOR>] <capacidade>`, status `Planned` (o ativo em `In Progress`) e objetivo, critério de pronto e fora de escopo na descrição. **Dependência entre projetos:** o MCP do Linear não cria essa relação. Escreva `Depende de: <Projeto>` na primeira linha da descrição do projeto e no `ROADMAP.md`, e inclua na resposta final a lista para o André criar no Linear (no projeto, *Dependencies* → *Blocked by*).
 3. **Critério de saída** na descrição de cada milestone.
 4. **Issues pai** no milestone certo, com labels de `Type` e domínio, estimativa, prioridade e relações *blocked by* (campo `blockedBy` do `save_issue`). Crie na ordem do roadmap, para que a issue que bloqueia já exista quando a bloqueada for criada; confira as relações no fim com `get_issue`. A descrição segue o modelo de issue pai (`docs/fluxo/linear/templates.md`). **Sub-issues não são criadas aqui**: o Diretor cria a partir do `tasks.md`.
 5. Status inicial **Backlog**. Pergunte quais já vão para **Ready**.
@@ -107,7 +107,7 @@ Para cada spec: título no padrão, estimativa (M/L), labels de domínio, bloque
 ### B3. Relatório (curto, nesta forma)
 ```
 Auditoria — <Time> — <data>
-Projeto ativo: BRU · Gestão de clientes · Milestone: Alpha (3/5 Done)
+Projeto ativo: [BRU] Gestão de clientes · Milestone: Alpha (3/5 Done)
 Antes de qualquer coisa nova:
   1. BRU-18 [FEAT] Spec 004 — ... em In Progress há 5 dias (Fundação · Beta) — retomar
   2. Fundação · Beta fechado e 7 commits sem release desde v0.2.0 → sugerir v0.3.0
