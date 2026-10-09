@@ -44,7 +44,7 @@ grep -qxF '.pipeline/' "$(git rev-parse --git-common-dir)/info/exclude" \
 ```
 Faltou algo → diga ao André o que falta (normalmente: rodar `01-preparacao-da-casa.md`) e encerre.
 
-**Versão do fluxo:** compare `docs/fluxo/VERSION` com a última tag do repositório central (`git ls-remote --tags --refs https://github.com/zynox-ia/dev-workflow.git | sed 's#.*refs/tags/v##' | sort -V | tail -1`). Se houver versão mais nova, inclua uma linha no resumo de abertura: "Fluxo v<atual> → v<nova> disponível (rodar 04-atualizar-fluxo)." Não bloqueia a sessão.
+**Versão do fluxo:** compare `docs/fluxo/VERSION` com a última tag do repositório central (`git ls-remote --tags --refs https://github.com/zynox-ia/dev-workflow.git | sed 's#.*refs/tags/v##' | sort -V | tail -1`). Se houver versão mais nova, inclua uma linha no resumo de abertura: "Fluxo v<atual> → v<nova> disponível. Para atualizar, num agente novo: `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções para atualizar o fluxo neste repositório.`" Não bloqueia a sessão.
 
 ### 3.2 Develop atualizada e rodando
 - Árvore suja na pasta principal → mostre os arquivos e pergunte ao André o que fazer. Não descarte nada.
