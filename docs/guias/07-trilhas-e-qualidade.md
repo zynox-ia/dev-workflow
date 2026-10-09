@@ -96,8 +96,9 @@ Cada papel usa um modelo fixo, definido em `.traycer/agent-selection-guide.md`. 
 |---|---|---|
 | Coordenador | Você escolhe ao abrir a sessão | — |
 | Diretores e auxiliares do Coordenador | Terra Medium | Sonnet 5.5 |
-| Agentes de fase | Luna Max | Haiku 4.5 |
+| Agente da fase plan | Sol Max | Opus 5 |
+| Demais agentes de fase | Luna Max | Haiku 4.5 |
 | Revisor independente | O modelo que **não** implementou | — |
 
-Nenhum agente é criado com modelo fora da tabela (como Opus) sem pedido seu. Para mudar a tabela, mude `docs/fluxo/modelos/agent-selection-guide.md` no repositório central e publique uma versão; o 04 instala nos projetos.
+O plan usa um modelo mais forte porque um plano ruim contamina tasks, implementação e revisão. Nenhum agente é criado com modelo fora da tabela, ou de outro papel, sem pedido seu. Para mudar a tabela, mude `docs/fluxo/modelos/agent-selection-guide.md` no repositório central e publique uma versão; o 04 instala nos projetos.
 

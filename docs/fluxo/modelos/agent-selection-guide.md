@@ -5,13 +5,14 @@
 
 ## Regra
 
-Escolha o modelo pelo **papel** do agente que vai ser criado, nesta tabela. Use a **opção 1**; a **opção 2** só quando a opção 1 estiver indisponível (cota esgotada, modelo fora do ar). Nunca use um modelo fora da tabela, inclusive Opus, sem pedido explícito do André.
+Escolha o modelo pelo **papel** do agente que vai ser criado, nesta tabela. Use a **opção 1**; a **opção 2** só quando a opção 1 estiver indisponível (cota esgotada, modelo fora do ar). Nunca use um modelo fora da tabela, nem um modelo da tabela em outro papel (Opus 5 só no plan), sem pedido explícito do André.
 
 | Papel do agente criado | Quem cria | Opção 1 | Opção 2 |
 |---|---|---|---|
 | Diretor 01, 02, 03 | Coordenador | Terra Medium | Sonnet 5.5 |
 | Auxiliares do Coordenador (`Auditor`, `Release`) | Coordenador | Terra Medium | Sonnet 5.5 |
-| Agentes de fase (`<ID> · <fase>`: specify, clarify, plan, tasks, analyze, implement, converge, bug-assess, bug-fix, bug-test, conflitos, Linear) | Diretor | Luna Max | Haiku 4.5 |
+| Agente da fase **plan** (`<ID> · plan`) | Diretor | Sol Max | Opus 5 |
+| Demais agentes de fase (`<ID> · <fase>`: specify, clarify, tasks, analyze, implement, converge, bug-assess, bug-fix, bug-test, conflitos, Linear) | Diretor | Luna Max | Haiku 4.5 |
 | Revisor independente (`<ID> · revisão`) | Diretor | O modelo da tabela que **não** fez a implementação da issue | — |
 
 ## Revisor independente
