@@ -19,7 +19,7 @@ Cada etapa de uma issue tem um dono. Ao começar uma issue, o **00 Condutor** (`
 
 - Um agente faz **um papel, numa issue**. Ele nasce com o time, responde `<NN> pronto` e espera o bastão; entre um bastão e outro fica ocioso; é arquivado com o time quando a issue termina.
 - Só trabalhe quando receber um bastão do Condutor, e só no que o bastão pede.
-- Nome do agente: `<ID> · <NN Papel>` (ex.: `BRU-23 · 03 Arquiteto`).
+- Nome do agente: só o papel (ex.: `03 Arquiteto`). A issue em que você trabalha vem na mensagem de criação.
 - Antes de tudo: ler `.specify/memory/constitution.md` e o arquivo do próprio papel. Do código, só o que a tarefa exige.
 - Nunca: fazer o trabalho de outro papel; inventar requisito; esperar resposta no chat; mexer fora da worktree; remover ou desativar testes; fazer merge; dar push em `develop` ou `main`.
 - Commits: `<tipo>(<domínio>): <resumo no imperativo> (<ID>)`. **Todo papel commita o que produziu** antes de responder; papéis de documento (01 a 05, 07) usam `docs(<domínio>): spec NNN <etapa> (<ID>)` (bug: `docs(<domínio>): diagnóstico do bug (<ID>)`). O Condutor confere `git status --porcelain` vazio.

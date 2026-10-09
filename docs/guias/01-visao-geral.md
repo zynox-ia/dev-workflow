@@ -23,7 +23,7 @@ Você descreve o que quer no Linear; o **00 Condutor** pega uma issue por vez e 
 
 Cada papel tem um arquivo em `docs/fluxo/papeis/` e um modelo de IA fixo (guia 07, seção 8). Os papéis só falam com o Condutor; o Condutor fala com você.
 
-**O time nasce junto e é trocado a cada issue.** Ao começar uma issue, o Condutor cria de uma vez todos os agentes da trilha, e você vê o time inteiro no painel do Traycer (`BRU-23 · 01 Especificador` … `BRU-23 · 09 Verificador`). Cada um espera o bastão, faz a sua parte e fica disponível para as voltas (uma correção pedida pelo 08 volta para o mesmo 06). Quando a issue é mesclada, o time inteiro é arquivado e a próxima issue começa com um time novo, de memória limpa.
+**O time nasce junto e é trocado a cada issue.** Ao começar uma issue, o Condutor cria de uma vez todos os agentes da trilha, e você vê o time inteiro no painel do Traycer (`01 Especificador` … `09 Verificador`); qual issue ele está fazendo, você vê no Linear e na conversa. Cada um espera o bastão, faz a sua parte e fica disponível para as voltas (uma correção pedida pelo 08 volta para o mesmo 06). Quando a issue é mesclada, o time inteiro é arquivado e a próxima issue começa com um time novo, de memória limpa.
 
 ```
 André

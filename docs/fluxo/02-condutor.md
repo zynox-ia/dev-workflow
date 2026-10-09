@@ -104,13 +104,13 @@ No modo `automático`, as issues com `Preparada` vêm primeiro; a regra de prior
 ## 6. O time e o bastão
 
 ### 6.1 Montar o time da issue
-Crie, **um de cada vez e todos antes de começar**, um agente para cada papel da trilha, na worktree da issue, interface Chat:
+Crie, **um de cada vez e todos antes de começar**, um agente para cada papel da trilha, na worktree da issue, interface Chat. O nome é só o papel (`01 Especificador`), sem o ID da issue: a issue está no Linear e na mensagem de criação. Como só existe um time por vez, os nomes não se repetem; antes de criar, confira que não sobrou nenhum agente do time anterior.
 
 | Trilha | Agentes criados |
 |---|---|
-| SDD | `<ID> · 01 Especificador` … `<ID> · 09 Verificador` (9 agentes) |
-| Bug | `<ID> · 01 Especificador` · `06 Implementador` · `07 Convergência` · `08 Revisor` · `09 Verificador` |
-| Manutenção | `<ID> · 06 Implementador` · `08 Revisor` · `09 Verificador` |
+| SDD | `01 Especificador` … `09 Verificador` (9 agentes) |
+| Bug | `01 Especificador` · `06 Implementador` · `07 Convergência` · `08 Revisor` · `09 Verificador` |
+| Manutenção | `06 Implementador` · `08 Revisor` · `09 Verificador` |
 | `preparar` | só os papéis antes do 06 da trilha |
 | Issue `Preparada` | só os papéis do 06 em diante da trilha |
 
@@ -195,10 +195,10 @@ Falhou (proteção de branch, check vermelho, conflito) → trate como exceção
 Qualquer exceção → **Verifying**, label `Aguardando André`, PR aberto, time arquivado, **sem** ambiente de teste (a porta 3001 e o banco de teste ficam livres para a próxima issue; o ambiente sobe quando o André pedir para testar). Registre no relatório e siga para a próxima issue que não dependa desta.
 
 ### 8.3 Modo `preparar`
-Prepara um lote para o automático rodar sem perguntas. **Lote:** as próximas issues da fila (seção 4) em Ready, sem `Preparada`, das trilhas SDD e Bug (Manutenção não precisa de preparo); padrão 3, ou as que o André indicar. Cada issue do lote tem o seu time (só os papéis antes do 06).
-1. **Passada 1**, issue por issue: começar (seção 5) e rodar o 01; na SDD, também o 02 rodada 1. Guarde as perguntas.
+Prepara um lote para o automático rodar sem perguntas. **Lote:** as próximas issues da fila (seção 4) em Ready, sem `Preparada`, das trilhas SDD e Bug (Manutenção não precisa de preparo); padrão 3, ou as que o André indicar. Também aqui há **um time por vez**: cada passada monta o time de uma issue, roda e arquiva antes da próxima.
+1. **Passada 1**, issue por issue: começar (seção 5), time `01 Especificador` + `02 Esclarecedor` (Bug: só o 01), rodar o 01 e, na SDD, o 02 rodada 1; push da branch, perguntas comentadas na issue, time arquivado. Guarde as perguntas.
 2. **Uma mensagem só** com as perguntas do lote, agrupadas por issue (formato da seção 7). Espere as respostas.
-3. **Passada 2**, issue por issue: 02 rodada 2 (se houve perguntas), 03, aprovação de plano quando exigida, 04, 05. Pergunta nova num papel → junte para uma segunda mensagem no fim da passada; a issue espera, as outras seguem.
+3. **Passada 2**, issue por issue: worktree a partir da branch, time `02 Esclarecedor` a `05 Analista`, 02 rodada 2 com as respostas (se houve perguntas), 03, aprovação de plano quando exigida, 04, 05. Pergunta nova num papel → junte para uma segunda mensagem no fim da passada; a issue espera, as outras seguem.
 4. Issue com todos os papéis antes do 06 aprovados: push da branch (os papéis já commitaram os artefatos), label `Preparada`, status de volta para **Ready**, arquive o time e remova a worktree (a branch fica em `origin`). Bug: basta o 01. Quando ela rodar, ganha um time novo com os papéis do 06 em diante.
 5. Issue que ficou com pergunta sem resposta: `Aguardando André`, como no automático.
 6. Termine com o resumo: preparadas, aguardando, prontas para o automático.
@@ -209,7 +209,7 @@ Prepara um lote para o automático rodar sem perguntas. **Lote:** as próximas i
 
 1. Confirme o PR mesclado na base (`gh pr view <n> --json state,baseRefName`). Se a automação não moveu, mova a issue e as sub-issues para **Done**; remova `Preparada`.
 2. **Hotfix:** abra o PR `main → develop` com título `chore: back-merge do hotfix <ID>` e avise o André. O merge na `main` e o back-merge são dele, e o back-merge é *merge commit*, nunca squash.
-3. Pare a aplicação de teste, apague o banco de teste (comando em *Ambiente local* do `projeto.md`), copie `.pipeline/<ID>.md` e a revisão para `.pipeline/encerradas/` na pasta principal, remova a worktree, apague a branch (`git branch -D <branch>; git push origin --delete <branch>`, se ainda existir) e **arquive o time inteiro** (`<ID> · ...`). A próxima issue ganha um time novo (seção 6.1).
+3. Pare a aplicação de teste, apague o banco de teste (comando em *Ambiente local* do `projeto.md`), copie `.pipeline/<ID>.md` e a revisão para `.pipeline/encerradas/` na pasta principal, remova a worktree, apague a branch (`git branch -D <branch>; git push origin --delete <branch>`, se ainda existir) e **arquive o time inteiro**. A próxima issue ganha um time novo (seção 6.1).
 4. Pasta principal: `git pull --ff-only origin develop` e reinicie a aplicação da develop.
 5. **Milestone fechado** (todas as issues pai e avulsas Done ou Canceled) → sugira a release (seção 10). **Projeto chegou a GA** → rode o Auditor antes de abrir o próximo projeto.
 6. **Turno:** a cada 3 issues concluídas, ou se a conversa estiver longa, passe o turno (seção 12).
@@ -260,7 +260,7 @@ Com o ok do André, agente auxiliar `Release`: (1) branch `release/vX.Y.Z` da de
 
 Para o contexto não estourar em sessões longas:
 1. Atualize `.pipeline/condutor.md` (`turno: <n+1>`).
-2. Crie um agente novo `00 Condutor · turno <n+1>`, modelo do Condutor na tabela, com: *"Siga docs/fluxo/02-condutor.md. Modo: <modo>. Turno de continuação <n+1>: na abertura, rode só os passos 1, 5 e 6 (a develop já está de pé e a fila já foi aprovada); leia .pipeline/condutor.md e continue de onde parou. Arquive o agente '00 Condutor · turno <n>'."*
+2. Crie um agente novo `00 Condutor · turno <n+1>` (o Condutor é o único com sufixo, para os dois turnos não se confundirem por um instante), modelo do Condutor na tabela, com: *"Siga docs/fluxo/02-condutor.md. Modo: <modo>. Turno de continuação <n+1>: na abertura, rode só os passos 1, 5 e 6 (a develop já está de pé e a fila já foi aprovada); leia .pipeline/condutor.md e continue de onde parou. Arquive o agente '00 Condutor · turno <n>'."*
    A aplicação da develop fica no terminal do turno 1; se ela cair, o turno atual a sobe de novo.
 3. Responda só: `Turno <n> encerrado.` e pare.
 

@@ -10,10 +10,10 @@ Escolha o modelo pelo **papel** do agente que vai ser criado, nesta tabela. Use 
 | Papel do agente criado | Quem cria | Opção 1 | Opção 2 |
 |---|---|---|---|
 | 00 Condutor (turno seguinte) e auxiliares (`Auditor`, `Release`) | Condutor | Terra Medium | Sonnet 5.5 |
-| 03 Arquiteto (`<ID> · 03 Arquiteto`) | Condutor | Sol Max | Opus 5 |
+| 03 Arquiteto | Condutor | Sol Max | Opus 5 |
 | 01 Especificador, 02 Esclarecedor, 04 Planejador, 05 Analista, 06 Implementador, 07 Convergência, 09 Verificador | Condutor | Luna Max | Haiku 4.5 |
 | Agente da sessão visual (`03-visual.md`) | André | Luna Max | Haiku 4.5 |
-| 08 Revisor (`<ID> · 08 Revisor`) | Condutor ou sessão visual | O modelo da tabela que **não** implementou (06, ou o agente da sessão visual) | — |
+| 08 Revisor (`08 Revisor`; na sessão visual, `08 Revisor · visual`) | Condutor ou sessão visual | O modelo da tabela que **não** implementou (06, ou o agente da sessão visual) | — |
 
 ## 08 Revisor
 
