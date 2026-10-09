@@ -17,6 +17,7 @@ dev-workflow/
         ├── VERSION              versão atual (ex.: 1.2.0)
         ├── CHANGELOG.md         o que mudou em cada versão e a ação necessária nos projetos
         ├── 00-convencoes.md … 04-atualizar-fluxo.md
+        ├── papeis/              01 Especificador … 09 Verificador
         ├── modelos/             AGENTS.md e agent-selection-guide.md (instalados nos projetos)
         ├── skills/              planejar-etapas, registrar-linear
         └── linear/              guidance, templates e skills do agente do Linear
@@ -32,7 +33,7 @@ Por ser público, qualquer agente baixa o fluxo com `git clone`, sem precisar de
 |---|---|---|
 | **MAJOR** | Exige reconfigurar projetos: muda status, labels, estrutura do Linear, ou pede para rodar a preparação de novo | Trocar os status do Linear |
 | **MINOR** | Capacidade nova, compatível | Nova skill, nova fase opcional |
-| **PATCH** | Correção de texto, de comando ou de clareza | Ajustar um brief do Diretor |
+| **PATCH** | Correção de texto, de comando ou de clareza | Ajustar o arquivo de um papel |
 
 Toda versão tem uma entrada no `CHANGELOG.md`, sempre com a seção **"Ação necessária nos projetos"** (ou "nenhuma").
 
@@ -56,7 +57,7 @@ O agente copia `docs/guias/` e `docs/fluxo/` da versão pedida, instala as skill
 
 **Ao escrever uma versão nova:** tudo o que os projetos precisam mudar em arquivos e que o 04 consegue fazer sozinho vai no changelog como item `[04]`, com instruções exatas. Rodar a preparação de novo só em MAJOR.
 
-O Coordenador avisa na abertura de cada sessão quando o projeto está numa versão mais antiga que a última do central.
+O Condutor avisa na abertura de cada sessão quando o projeto está numa versão mais antiga que a última do central.
 
 ## 5. `AGENTS.md` dos projetos
 
@@ -77,8 +78,8 @@ Mudar uma regra do fluxo = mudar o modelo no central e publicar uma versão. Mud
 
 | Skill | Onde vive | Quem usa | Para quê |
 |---|---|---|---|
-| `registrar-linear` | Repositório (`.claude/skills`, `.agents/skills`) | Você no Traycer; o Diretor na fase de tasks | Criar demandas no padrão (modo A) e as sub-issues de uma spec (modo B) |
-| `planejar-etapas` | Repositório | Você no Traycer; o Coordenador (auditoria) | Planejar projetos e specs, auditar, quebrar issues XL |
+| `registrar-linear` | Repositório (`.claude/skills`, `.agents/skills`) | Você no Traycer; o 04 Planejador | Criar demandas no padrão (modo A) e as sub-issues de uma spec (modo B) |
+| `planejar-etapas` | Repositório | Você no Traycer; o Condutor (auditoria) | Planejar projetos e specs, auditar, quebrar issues XL |
 | `/nova-issue` | Linear (skill pessoal) | Você, conversando com o agente do Linear | O mesmo que o modo A da `registrar-linear`, sem abrir o Traycer |
 
 `registrar-linear` (modo A) e `/nova-issue` seguem as mesmas regras. Ao mudar uma, mude a outra na mesma versão do fluxo. No Linear, atualize a skill pessoal colando o texto novo e salvando de novo.

@@ -10,7 +10,7 @@ Fluxo de desenvolvimento com agentes de IA: convenções, prompts, skills e docu
 | Pasta | Conteúdo |
 |---|---|
 | `docs/guias/` | Padrões explicados: visão geral, Linear, nomenclatura, git e releases, ordem de construção, ambiente local, trilhas e qualidade, glossário, manutenção |
-| `docs/fluxo/` | Prompts operacionais (preparação, Diretor, Coordenador, atualização), convenções normativas, skills, configuração do agente do Linear e o modelo do `AGENTS.md` dos projetos |
+| `docs/fluxo/` | Prompts operacionais (preparação, Condutor, sessão visual, atualização), papéis 01 a 09, convenções normativas, skills, configuração do agente do Linear e o modelo do `AGENTS.md` dos projetos |
 
 ## Instalar ou atualizar num projeto
 

@@ -3,6 +3,30 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) · Versão: [SemVer](https://semver.org/lang/pt-BR/).
 Cada versão lista também a **ação necessária nos projetos**, quando houver.
 
+## [2.0.0] — 2026-10-09
+### Alterado (incompatível)
+- **Condutor no lugar de Coordenador + 3 Diretores.** Um agente, o 00 Condutor (`02-condutor.md`), leva **uma issue por vez** e passa o bastão para um agente novo em cada papel. Saem `02-diretor.md` e `03-coordenador.md`.
+- **Papéis numerados 01 a 09** (`docs/fluxo/papeis/`), um arquivo cada: Especificador, Esclarecedor, Arquiteto, Planejador, Analista, Implementador, Convergência, Revisor, Verificador.
+- **Sem trilha rápida.** Todo `[FEAT]`, `[REFACTOR]`, `[PERF]`, `[SECURITY]` e `[INFRA]` é spec e passa pelo Spec Kit inteiro, qualquer tamanho. Avulsas: `[FIX]`, `[HOTFIX]` (trilha Bug), `[CHORE]`, `[DOCS]` (trilha Manutenção) e sessão visual.
+- **Ambientes:** develop 3000, teste do Condutor 3001, sessão visual 3002, com endereços `*.localhost` (cookies separados). Um banco de teste, cópia da develop, no lugar dos bancos por Diretor. Usuário fixo de teste no `AGENTS.md`.
+- Modelos por papel atualizados (`agent-selection-guide.md`): 03 Arquiteto com Sol Max/Opus 5; Condutor com Terra Medium/Sonnet 5.5; demais com Luna Max/Haiku 4.5; 08 com o modelo que não implementou.
+### Adicionado
+- **Modos do Condutor:** `manual` (você testa e mescla), `preparar` (01 a 05 num lote, perguntas juntas, label `Preparada`) e `automático` (fila inteira; o Condutor mescla na develop, exceto `[SECURITY]`, `[HOTFIX]`, `Breaking Change` e `DB Migration`; relatório no fim). Passagem de turno a cada 3 issues.
+- **Sessão visual** (`03-visual.md`): ajustes de tela conversados, sem spec, com issue de flag `Visual`, um commit por pedido, revisão e PR.
+- **Instalação encadeada:** o 04 segue para a preparação depois do seu merge, e a preparação segue para o `planejar-etapas`.
+- Flags de workspace `Preparada`, `Plano aprovado`, `Aguardando André` e `Visual` (o Condutor cria as que faltarem). Issues estacionadas são retomadas na abertura do Condutor.
+### Ação necessária nos projetos
+- **Antes de atualizar:** termine ou cancele as issues em andamento com os Diretores, e arquive o Coordenador e os Diretores.
+- Rodar o `04-atualizar-fluxo.md` do central.
+- `[04]` Em `.specify/memory/projeto.md`, seção *Ambiente local*, sem rodar nada:
+  - substituir as linhas "Portas dos Diretores", "Banco isolado do Diretor", "Copiar banco da develop → Diretor" e "Testes usam banco local compartilhado" por: `| Porta de teste (Condutor) | 3001 (http://teste.localhost:3001) |`, `| Porta da sessão visual | 3002 (http://visual.localhost:3002) |`, `| Banco de teste | <o banco isolado registrado, com o nome trocado para teste> |` e `| Recriar banco de teste como cópia da develop | <os comandos de cópia registrados, com o destino trocado para o banco de teste> (adaptado; testar no primeiro uso) |`;
+  - acrescentar `| Apagar banco de teste | <comando para apagar o banco de teste> |`;
+  - trocar a linha "URL de verificação" por `| Caminho de verificação | /<caminho da URL antiga> → <status> |`;
+  - na linha "Porta da develop", acrescentar `(http://develop.localhost:3000)`.
+- `[04]` No bloco `projeto` do `AGENTS.md`, acrescentar depois da linha da stack: `Usuário de teste (só desenvolvimento): <e-mail> · <senha>`, com o usuário que o seed cria (procure no script de seed). Sem seed ou sem usuário encontrado: `Usuário de teste: a definir` e liste como pendência para o André.
+- No Linear: atualizar o guidance do agente e a skill pessoal `/nova-issue` com os textos novos de `docs/fluxo/linear/`.
+- Para trabalhar: `Siga docs/fluxo/02-condutor.md. Modo: manual`.
+
 ## [1.3.0] — 2026-10-09
 ### Adicionado
 - Roteamento de modelos por papel em `.traycer/agent-selection-guide.md` (modelo em `docs/fluxo/modelos/`), lido pelo Traycer ao criar agentes: Diretores e auxiliares com Terra Medium (reserva Sonnet 5.5); fase plan com Sol Max (reserva Opus 5); demais agentes de fase com Luna Max (reserva Haiku 4.5); revisor independente sempre com o modelo que não implementou. Nenhum modelo fora da tabela sem pedido do André.

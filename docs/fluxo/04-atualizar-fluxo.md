@@ -1,4 +1,4 @@
-# Prompt 4 — Instalar ou atualizar o fluxo (v4)
+# Prompt 4 — Instalar ou atualizar o fluxo (v5)
 
 > Rode num **agente novo** do Traycer, na pasta principal de um repositório de cliente, para:
 > - **instalar** o fluxo num projeto que ainda não tem `docs/fluxo/`; ou
@@ -110,7 +110,7 @@ diff <(sed -n '/<!-- dev-workflow:inicio/,/<!-- dev-workflow:fim -->/p' AGENTS.m
 grep -c '<!-- dev-workflow:inicio' AGENTS.md    # 1
 grep -qxF '@AGENTS.md' CLAUDE.md
 cmp docs/fluxo/modelos/agent-selection-guide.md .traycer/agent-selection-guide.md
-git status --short | grep -vE "^( M|\?\?|A |D | D) (docs/|\.claude/skills/|\.agents/skills/|AGENTS\.md|CLAUDE\.md|\.traycer/agent-selection-guide\.md|\.specify/memory/projeto\.md)" || true   # nada fora do permitido (projeto.md só se uma migração pediu)
+git status --short -uall | grep -vE "^( M|\?\?|A |D | D) (docs/|\.claude/skills/|\.agents/skills/|AGENTS\.md|CLAUDE\.md|\.traycer/agent-selection-guide\.md|\.specify/memory/projeto\.md)" || true   # nada fora do permitido (projeto.md só se uma migração pediu)
 ```
 
 ## Passo 9 — Entregar
@@ -122,3 +122,8 @@ gh pr create --base develop --title "chore(fluxo): atualizar para v<versão>" --
 rm -rf "$TMP"
 ```
 Responda ao André: versão anterior → nova, link do PR e a lista de **ações necessárias** (por exemplo: rodar uma fase da preparação, mudar algo no Linear).
+
+## Passo 10 — Continuar (instalação num projeto novo)
+Se o projeto ainda não tem `.specify/memory/projeto.md`, a instalação continua neste mesmo agente, em sequência:
+1. Diga ao André: `PR do fluxo aberto: <link>. Faça o merge e me responda "mesclei" para eu seguir com a preparação.` e espere.
+2. Com `mesclei`: confira o merge (`gh pr view <n> --json state`), `git checkout develop && git pull --ff-only origin develop`, e siga `docs/fluxo/01-preparacao-da-casa.md` do início.
