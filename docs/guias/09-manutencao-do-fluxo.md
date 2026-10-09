@@ -17,7 +17,7 @@ dev-workflow/
         ├── VERSION              versão atual (ex.: 1.2.0)
         ├── CHANGELOG.md         o que mudou em cada versão e a ação necessária nos projetos
         ├── 00-convencoes.md … 04-atualizar-fluxo.md
-        ├── modelos/             AGENTS.md (modelo instalado nos projetos)
+        ├── modelos/             AGENTS.md e agent-selection-guide.md (instalados nos projetos)
         ├── skills/              planejar-etapas, registrar-linear
         └── linear/              guidance, templates e skills do agente do Linear
 ```

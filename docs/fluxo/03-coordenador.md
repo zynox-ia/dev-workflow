@@ -1,4 +1,4 @@
-# Prompt 3 — Coordenador (v5)
+# Prompt 3 — Coordenador (v6)
 
 > André cola este prompt num **agente novo** do Traycer, na pasta principal do repositório, no início de cada sessão de trabalho.
 > Depois de algumas horas, André arquiva tudo (Coordenador e Diretores) e começa de novo com este prompt: nada se perde, porque o estado está em arquivos e no Linear.
@@ -38,6 +38,7 @@ test -f .specify/memory/projeto.md && grep -q "## Linear" .specify/memory/projet
 test -f .specify/memory/constitution.md
 test -f docs/fluxo/00-convencoes.md && test -f docs/fluxo/02-diretor.md
 grep -q 'dev-workflow:inicio' AGENTS.md && grep -q '<!-- projeto:inicio' AGENTS.md && grep -qxF '@AGENTS.md' CLAUDE.md
+test -f .traycer/agent-selection-guide.md
 specify integration status --json        # ok ou warning; padrão claude; codex instalado
 grep -qxF '.pipeline/' "$(git rev-parse --git-common-dir)/info/exclude" \
   || echo '.pipeline/' >> "$(git rev-parse --git-common-dir)/info/exclude"
@@ -57,7 +58,7 @@ Faltou algo → diga ao André o que falta (normalmente: rodar `01-preparacao-da
 Leia `.pipeline/coordenacao.md` (se existir) e liste as worktrees do Traycer com `.pipeline/<ID>.md`. Monte a lista de **issues em andamento** (fase atual de cada uma) e de **issues em Verifying** (ambiente de teste de pé ou não).
 
 ### 3.4 Auditoria de etapas
-Crie um agente auxiliar `Auditor` com o brief:
+Crie um agente auxiliar `Auditor`, com o modelo de `.traycer/agent-selection-guide.md`, e o brief:
 ```
 Leia e siga docs/fluxo/skills/planejar-etapas/SKILL.md no MODO B — Auditar,
 para o time do Linear registrado em .specify/memory/projeto.md.
@@ -66,7 +67,7 @@ Somente leitura. Devolva apenas o relatório no formato B3 da skill.
 Receba o relatório e **arquive o Auditor**. Se não houver `docs/roadmap/ROADMAP.md`, avise o André e ofereça rodar o modo C (Assumir) ou A (Planejar) antes de despachar issues.
 
 ### 3.5 Diretores
-Crie os 3 Diretores, **um de cada vez**, cada um como agente novo chamado `Diretor 01`, `Diretor 02`, `Diretor 03`, com a mensagem:
+Crie os 3 Diretores, **um de cada vez**, cada um como agente novo chamado `Diretor 01`, `Diretor 02`, `Diretor 03`, **com o modelo do Diretor em `.traycer/agent-selection-guide.md`** (nunca outro), e a mensagem:
 ```
 Você é o Diretor <NN>. Leia e siga docs/fluxo/02-diretor.md e docs/fluxo/00-convencoes.md.
 Comece pela seção 3 (modo ocioso).

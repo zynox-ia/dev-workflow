@@ -3,6 +3,16 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) · Versão: [SemVer](https://semver.org/lang/pt-BR/).
 Cada versão lista também a **ação necessária nos projetos**, quando houver.
 
+## [1.3.0] — 2026-10-09
+### Adicionado
+- Roteamento de modelos por papel em `.traycer/agent-selection-guide.md` (modelo em `docs/fluxo/modelos/`), lido pelo Traycer ao criar agentes: Diretores e auxiliares com Terra Medium (reserva Sonnet 5.5); agentes de fase com Luna Max (reserva Haiku 4.5); revisor independente sempre com o modelo que não implementou. Nenhum modelo fora da tabela sem pedido do André.
+- Guia 07, seção 6: modelos por papel.
+### Alterado
+- Coordenador (v6) e Diretor (v4) criam cada agente com o modelo da tabela e registram o modelo usado. Atualização do fluxo (v4) instala o guia.
+### Ação necessária nos projetos
+- Rodar o `04-atualizar-fluxo.md` do central.
+- Conferir no seletor de modelos do Traycer se os nomes da tabela batem com os que aparecem lá.
+
 ## [1.2.0] — 2026-10-09
 ### Alterado
 - Nome de projeto: `[<IDENTIFICADOR>] <capacidade>` (ex.: `[BRU] Gestão de clientes`), para reconhecer o cliente em qualquer lista do workspace.
