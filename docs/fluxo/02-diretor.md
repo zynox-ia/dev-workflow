@@ -1,4 +1,4 @@
-# Prompt 2 — Diretor (v2)
+# Prompt 2 — Diretor (v3)
 
 > Enviado pelo **Coordenador** ao criar um Diretor. André não precisa colá-lo.
 > Você é o **Diretor <NN>** (01, 02 ou 03). Siga `docs/fluxo/00-convencoes.md`.
@@ -185,8 +185,8 @@ Leia `.pipeline/<ID>.md` na worktree e continue da `fase_atual`. Issue em **Veri
 
 ## 9. Ambiente de teste e Verifying
 
-1. Na worktree: copie o `.env` da pasta principal, se faltar; instale as dependências.
-2. **Banco do Diretor** (comandos em *Ambiente local* do `projeto.md`):
+1. Na worktree: copie o `.env` da pasta principal, se faltar; instale as dependências (comando no `AGENTS.md`).
+2. **Banco do Diretor** (comandos em *Ambiente local* do `projeto.md` e migrations/seed no `AGENTS.md`):
    - suba o banco isolado `<repo>-dNN` (com porta própria, se o compose exigir);
    - **copie os dados do banco local da develop** para ele; develop vazia → seed;
    - rode as migrations da branch **nessa cópia**;
@@ -250,7 +250,7 @@ Você é o agente da fase <fase> da issue <ID>.
 Pasta de trabalho: <worktree>. Feature: <feature_dir ou bug_slug>.
 ANTES DE TUDO: leia .specify/memory/constitution.md. Leia do código apenas o que esta tarefa exige.
 TAREFA ÚNICA: <1–3 linhas>.
-COMANDOS DE VERIFICAÇÃO: <só nas fases que verificam; copiados do projeto.md>.
+COMANDOS DE VERIFICAÇÃO: <só nas fases que verificam; copiados da seção Comandos do AGENTS.md>.
 COMMITS: <tipo>(<domínio>): <resumo no imperativo> (<ID>).
 Skill do Spec Kit (quando houver): no Claude Code /speckit-<cmd>; no Codex $speckit-<cmd>. Siga à risca, sem pular etapas.
 NÃO FAÇA: nada de outra fase; inventar requisitos; esperar respostas no chat; mexer fora da pasta de trabalho; remover ou desativar testes.

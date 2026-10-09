@@ -121,7 +121,9 @@ Escalada: trilha rápida que passar dos limites de S (arquivo novo de domínio, 
 |---|---|---|
 | `docs/guias/` | Documentação explicativa | sim |
 | `docs/fluxo/` | Prompts, convenções, skills, guidance do Linear; `VERSION` e `CHANGELOG.md`. Cópia do repositório central: nunca editar no projeto | sim |
+| `AGENTS.md` | Regras e comandos para qualquer agente. Bloco `projeto` (escrito pela preparação, editável) e bloco `dev-workflow` (gerenciado pelo `04-atualizar-fluxo`, nunca editar no projeto). Sem descrição do código; menos de 120 linhas | sim |
+| `CLAUDE.md` | Importa o `AGENTS.md` (`@AGENTS.md`) para o Claude Code | sim |
 | `.claude/skills/`, `.agents/skills/` | Skills do Spec Kit e do fluxo (`planejar-etapas`, `registrar-linear`), instaladas pelo `04-atualizar-fluxo` | sim |
 | `docs/roadmap/ROADMAP.md`, `decisoes.md` | Plano e decisões | sim |
-| `.specify/memory/` | Constituição, `projeto.md`, `preparacao.md` | sim |
+| `.specify/memory/` | Constituição, `projeto.md` (verificação, linha de base, ambiente local, Linear), `preparacao.md` | sim |
 | `.pipeline/` | `coordenacao.md`, `<ID>.md`, revisões, auditorias | não (`.git/info/exclude`) |

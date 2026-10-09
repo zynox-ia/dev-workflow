@@ -1,4 +1,4 @@
-# Prompt 3 — Coordenador (v2)
+# Prompt 3 — Coordenador (v3)
 
 > André cola este prompt num **agente novo** do Traycer, na pasta principal do repositório, no início de cada sessão de trabalho.
 > Depois de algumas horas, André arquiva tudo (Coordenador e Diretores) e começa de novo com este prompt: nada se perde, porque o estado está em arquivos e no Linear.
@@ -37,6 +37,7 @@ Na pasta principal, com `git fetch origin`, confira contra `origin/develop`:
 test -f .specify/memory/projeto.md && grep -q "## Linear" .specify/memory/projeto.md
 test -f .specify/memory/constitution.md
 test -f docs/fluxo/00-convencoes.md && test -f docs/fluxo/02-diretor.md
+grep -q 'dev-workflow:inicio' AGENTS.md && grep -q '<!-- projeto:inicio' AGENTS.md && grep -qxF '@AGENTS.md' CLAUDE.md
 specify integration status --json        # ok ou warning; padrão claude; codex instalado
 grep -qxF '.pipeline/' "$(git rev-parse --git-common-dir)/info/exclude" \
   || echo '.pipeline/' >> "$(git rev-parse --git-common-dir)/info/exclude"
@@ -48,8 +49,8 @@ Faltou algo → diga ao André o que falta (normalmente: rodar `01-preparacao-da
 ### 3.2 Develop atualizada e rodando
 - Árvore suja na pasta principal → mostre os arquivos e pergunte ao André o que fazer. Não descarte nada.
 - `git checkout develop && git pull --ff-only origin develop` (se não for *fast-forward*, pare e reporte).
-- Lockfile mudou → rode o comando de instalação do `projeto.md`.
-- Docker (`docker info`; se parado, peça ao André para abrir o Docker Desktop), serviços, migrações locais.
+- Lockfile mudou → rode o comando de instalação do `AGENTS.md`.
+- Docker (`docker info`; se parado, peça ao André para abrir o Docker Desktop), serviços e migrations locais (comandos no `AGENTS.md`).
 - Aplicação da develop na porta do `projeto.md`, num **terminal do Traycer**; confirme a URL de verificação.
 
 ### 3.3 Estado anterior

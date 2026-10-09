@@ -28,7 +28,7 @@ Resultado: `localhost:3002` abre com os mesmos dados que você já usa na develo
 
 **Regra fixa:** nunca copiar dados de produção para a máquina local (LGPD). A fonte da cópia é sempre o banco local da develop.
 
-Os comandos exatos de cópia, seed e banco isolado de cada projeto ficam na seção *Ambiente local* do `.specify/memory/projeto.md`, descobertos e testados pela preparação da casa.
+Os comandos do dia a dia (instalar, subir serviços, migrations, seed, subir a aplicação, testes) ficam no `AGENTS.md` da raiz; os de banco isolado e cópia ficam na seção *Ambiente local* do `.specify/memory/projeto.md`. Os dois são descobertos e testados pela preparação da casa.
 
 ## 3. Como validar uma issue em Verifying
 

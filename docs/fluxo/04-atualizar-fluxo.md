@@ -1,4 +1,4 @@
-# Prompt 4 — Instalar ou atualizar o fluxo (v1)
+# Prompt 4 — Instalar ou atualizar o fluxo (v2)
 
 > Rode num **agente novo** do Traycer, na pasta principal de um repositório de cliente, para:
 > - **instalar** o fluxo num projeto que ainda não tem `docs/fluxo/`; ou
@@ -10,7 +10,7 @@
 
 ## Seu papel
 
-Você copia `docs/guias/` e `docs/fluxo/` do repositório central para este projeto, na versão pedida, instala as skills do fluxo para os dois agentes e entrega tudo num PR para a develop. Você **não** altera código da aplicação, `docs/roadmap/`, `.specify/` nem nada fora das pastas listadas.
+Você copia `docs/guias/` e `docs/fluxo/` do repositório central para este projeto, na versão pedida, instala as skills do fluxo para os dois agentes, atualiza o bloco `dev-workflow` do `AGENTS.md` e entrega tudo num PR para a develop. Você **não** altera código da aplicação, `docs/roadmap/`, `.specify/`, o bloco `projeto` do `AGENTS.md` nem nada fora do que este prompt lista.
 
 ## Regras
 1. Árvore limpa antes de começar; nada é descartado.
@@ -63,17 +63,43 @@ done
 Só as pastas com esses nomes são substituídas; as skills do Spec Kit e outras ficam intactas.
 Assim, no Traycer, o André invoca `/registrar-linear` (Claude Code) ou `$registrar-linear` (Codex) em qualquer agente deste projeto.
 
-## Passo 6 — Conferir
+## Passo 6 — `AGENTS.md` e `CLAUDE.md`
+O `AGENTS.md` tem dois blocos: `projeto` (do time, escrito pela preparação) e `dev-workflow` (deste fluxo). Você só substitui o bloco `dev-workflow`.
+```bash
+M=docs/fluxo/modelos/AGENTS.md
+sed -n '/<!-- dev-workflow:inicio/,/<!-- dev-workflow:fim -->/p' "$M" > "$TMP/bloco.md"
+
+if [ ! -f AGENTS.md ]; then
+  cp "$M" AGENTS.md                                   # projeto novo: a preparação preenche o bloco projeto
+elif grep -q '<!-- dev-workflow:inicio' AGENTS.md; then
+  awk -v f="$TMP/bloco.md" '
+    /<!-- dev-workflow:inicio/ { while ((getline l < f) > 0) print l; skip = 1; next }
+    /<!-- dev-workflow:fim -->/ { skip = 0; next }
+    !skip' AGENTS.md > AGENTS.md.tmp && mv AGENTS.md.tmp AGENTS.md
+else
+  { cat AGENTS.md; echo; sed -n '/<!-- projeto:inicio/,/<!-- projeto:fim -->/p' "$M"; echo; cat "$TMP/bloco.md"; } > AGENTS.md.tmp \
+    && mv AGENTS.md.tmp AGENTS.md                     # AGENTS.md antigo: o conteúdo fica; a preparação (Fases 1 e 4) consolida
+fi
+
+test -f CLAUDE.md || printf '@AGENTS.md\n' > CLAUDE.md
+grep -qxF '@AGENTS.md' CLAUDE.md || { printf '@AGENTS.md\n\n' | cat - CLAUDE.md > CLAUDE.md.tmp && mv CLAUDE.md.tmp CLAUDE.md; }
+```
+Se o bloco `projeto` ainda tiver marcadores do modelo (`<comando>`), avise na resposta final que falta rodar a preparação (`01-preparacao-da-casa.md`) ou, num projeto já preparado, as seções 4.3 e 4.5 dela.
+
+## Passo 7 — Conferir
 ```bash
 cat docs/fluxo/VERSION                          # = versão alvo
 test -f docs/fluxo/00-convencoes.md && test -f docs/guias/02-linear.md
 ls .claude/skills .agents/skills | grep -E "planejar-etapas|registrar-linear"
-git status --short | grep -vE "^( M|\?\?|A |D | D) (docs/|\.claude/skills/|\.agents/skills/)" || true   # nada fora das pastas permitidas
+diff <(sed -n '/<!-- dev-workflow:inicio/,/<!-- dev-workflow:fim -->/p' AGENTS.md) "$TMP/bloco.md"   # sem diferenças
+grep -c '<!-- dev-workflow:inicio' AGENTS.md    # 1
+grep -qxF '@AGENTS.md' CLAUDE.md
+git status --short | grep -vE "^( M|\?\?|A |D | D) (docs/|\.claude/skills/|\.agents/skills/|AGENTS\.md|CLAUDE\.md)" || true   # nada fora do permitido
 ```
 
-## Passo 7 — Entregar
+## Passo 8 — Entregar
 ```bash
-git add docs .claude/skills .agents/skills
+git add docs .claude/skills .agents/skills AGENTS.md CLAUDE.md
 git commit -m "chore(fluxo): atualizar para v<versão>"
 git push -u origin chore/fluxo-v<versão>
 gh pr create --base develop --title "chore(fluxo): atualizar para v<versão>" --body "<resumo do changelog e ações necessárias>"
