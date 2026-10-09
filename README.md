@@ -14,15 +14,19 @@ Fluxo de desenvolvimento com agentes de IA: convenções, prompts, skills e docu
 
 ## Instalar ou atualizar num projeto
 
-Num agente novo do Traycer, na pasta do projeto do cliente:
+Num agente novo do Traycer, na pasta do projeto do cliente (sempre pelo link, nunca a cópia local):
 ```
-Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções para instalar o fluxo neste repositório.
+Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório.
 ```
-Para atualizar, use o mesmo link (nunca a cópia local, que é da versão antiga):
-```
-Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções para atualizar o fluxo neste repositório.
-```
-Atualizar não reinstala o Spec Kit nem refaz a preparação: troca a documentação, as skills e o bloco do fluxo no `AGENTS.md`, e aplica as migrações que o changelog pedir, tudo num PR para a develop.
+O **prompt mestre** lê o repositório, mostra um diagnóstico e faz só o que falta:
+
+| Etapa | Não existe | Existe |
+|---|---|---|
+| Fluxo | Instala | Atualiza se houver versão nova (com as migrações) |
+| Casa (Spec Kit, constituição, comandos, ambiente, Linear) | Prepara do zero | Refaz só as fases que falham |
+| Planejamento | Planeja o roadmap | Audita: onde estamos e o que vem |
+
+Fluxo e casa saem num PR único; o roadmap, em outro. Ele para só no plano de ação, nas suas respostas e nos merges. O mesmo prompt serve para projeto novo, projeto existente e atualização.
 
 ## Contribuir
 

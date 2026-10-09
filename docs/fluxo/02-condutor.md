@@ -1,4 +1,4 @@
-# Prompt 2 — Condutor (v3)
+# Prompt 2 — Condutor (v4)
 
 > André cola num **agente novo** do Traycer, na pasta principal do repositório:
 > ```
@@ -45,9 +45,9 @@ Você **não** escreve código, spec, plano nem revisão: quem faz são os papé
      || echo '.pipeline/' >> "$(git rev-parse --git-common-dir)/info/exclude"
    ```
    Faltou algo → diga ao André o que falta e encerre.
-2. **Versão do fluxo:** compare `docs/fluxo/VERSION` com a última tag do central (`git ls-remote --tags --refs https://github.com/zynox-ia/dev-workflow.git | sed 's#.*refs/tags/v##' | sort -V | tail -1`). Mais nova → uma linha no resumo: "Fluxo v<atual> → v<nova>. Para atualizar, num agente novo: `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções para atualizar o fluxo neste repositório.`"
+2. **Versão do fluxo:** compare `docs/fluxo/VERSION` com a última tag do central (`git ls-remote --tags --refs https://github.com/zynox-ia/dev-workflow.git | sed 's#.*refs/tags/v##' | sort -V | tail -1`). Mais nova → uma linha no resumo: "Fluxo v<atual> → v<nova>. Para atualizar, num agente novo: `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório.`"
 3. **Labels do Linear:** as flags `Preparada`, `Plano aprovado`, `Aguardando André` e `Visual` existem no workspace; crie as que faltarem.
-4. **Develop rodando:** árvore suja na pasta principal → mostre e pergunte (não descarte nada). `git checkout develop && git pull --ff-only origin develop`; lockfile mudou → instalar; Docker, serviços e migrations locais; aplicação da develop na porta do `projeto.md` num terminal do Traycer; confirme o caminho de verificação em `http://develop.localhost:<porta>`.
+4. **Develop rodando** (projeto com `tipo: novo` no `projeto.md`: ainda não há aplicação; pule este passo e a fila é só a `Spec 001 — Fundação do projeto`): árvore suja na pasta principal → mostre e pergunte (não descarte nada). `git checkout develop && git pull --ff-only origin develop`; lockfile mudou → instalar; Docker, serviços e migrations locais; aplicação da develop na porta do `projeto.md` num terminal do Traycer; confirme o caminho de verificação em `http://develop.localhost:<porta>`.
 5. **Estado anterior:** leia `.pipeline/condutor.md`. Issue em andamento → retome de `fase_atual` no `.pipeline/<ID>.md` da worktree.
 6. **Pendências estacionadas** (issues do time com `Aguardando André` ou em **Verifying**):
    - em Verifying com o PR já mesclado → rode a seção 9 para ela;

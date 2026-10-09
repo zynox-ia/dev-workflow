@@ -49,11 +49,21 @@ Nunca edite `docs/fluxo/` direto num projeto: a mudança some na próxima atuali
 
 ## 4. Instalar ou atualizar num projeto
 
-Num agente novo do Traycer, na pasta do projeto, **sempre com o link do central**, para instalar ou atualizar (a cópia local do 04 é da versão antiga e não conhece as migrações novas):
+Num agente novo do Traycer, na pasta do projeto, **sempre com o link do central** (a cópia local do 04 é da versão antiga e não conhece as migrações novas):
 ```
-Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções para atualizar o fluxo neste repositório.
+Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório.
 ```
-O agente copia `docs/guias/` e `docs/fluxo/` da versão pedida, instala as skills para Claude Code e Codex, atualiza o bloco do fluxo no `AGENTS.md`, executa as migrações marcadas `[04]` no changelog e abre um PR `chore(fluxo): atualizar para vX.Y.Z` para a develop. Ele **não** reinstala o Spec Kit, não refaz a preparação (constituição, testes, ambiente local) e não mexe no Linear; o que precisar de você vem listado na resposta.
+O **prompt mestre** lê o repositório, mostra um diagnóstico e faz só o que falta:
+
+| Etapa | Não existe | Existe |
+|---|---|---|
+| Fluxo | Instala | Atualiza se houver versão nova (com as migrações) |
+| Casa (Spec Kit, constituição, comandos, ambiente, Linear) | Prepara do zero | Refaz só as fases que falham |
+| Planejamento | Planeja o roadmap | Audita: onde estamos e o que vem |
+
+Fluxo e casa saem num PR único; o roadmap, em outro. Ele para só no plano de ação, nas suas respostas e nos merges. O mesmo prompt serve para projeto novo, projeto existente e atualização.
+
+Na atualização, ele copia `docs/guias/` e `docs/fluxo/` da versão nova, reinstala só as skills do fluxo, atualiza o bloco do fluxo no `AGENTS.md` e executa as migrações `[04]`. Spec Kit, constituição, ambiente e Linear só são refeitos se o diagnóstico mostrar que a fase correspondente falha.
 
 **Ao escrever uma versão nova:** tudo o que os projetos precisam mudar em arquivos e que o 04 consegue fazer sozinho vai no changelog como item `[04]`, com instruções exatas. Rodar a preparação de novo só em MAJOR.
 

@@ -32,7 +32,7 @@ Os guias explicam; o arquivo [`fluxo/00-convencoes.md`](fluxo/00-convencoes.md) 
 | [`fluxo/02-condutor.md`](fluxo/02-condutor.md) | Conduz as issues, uma por vez: modos manual, preparar e automático |
 | [`fluxo/03-visual.md`](fluxo/03-visual.md) | Sessão visual conversada, sem spec |
 | [`fluxo/papeis/`](fluxo/papeis/) | Os papéis 01 a 09, um arquivo cada |
-| [`fluxo/04-atualizar-fluxo.md`](fluxo/04-atualizar-fluxo.md) | Instalar ou atualizar o fluxo a partir do repositório central |
+| [`fluxo/04-atualizar-fluxo.md`](fluxo/04-atualizar-fluxo.md) | Prompt mestre: instala ou atualiza o fluxo, prepara a casa e planeja (ou audita) |
 | [`fluxo/modelos/AGENTS.md`](fluxo/modelos/AGENTS.md) | Modelo do `AGENTS.md` da raiz dos projetos (regras e comandos para qualquer agente) |
 | [`fluxo/modelos/agent-selection-guide.md`](fluxo/modelos/agent-selection-guide.md) | Modelo de IA de cada papel, instalado em `.traycer/` |
 | [`fluxo/skills/registrar-linear/`](fluxo/skills/registrar-linear/) | Registrar demandas no padrão pelo Traycer; sub-issues das specs |
@@ -41,11 +41,19 @@ Os guias explicam; o arquivo [`fluxo/00-convencoes.md`](fluxo/00-convencoes.md) 
 
 ## Começo rápido
 
-**Projeto novo** — um agente só, que encadeia tudo e para nos seus merges:
+**Projeto novo, existente ou atualização** — um prompt só:
 ```
-Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções para instalar o fluxo neste repositório.
+Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório.
 ```
-Ele instala o fluxo (PR) → espera seu `mesclei` → faz a preparação da casa (PR) → espera seu `mesclei` → planeja o roadmap com você. Antes, configure o time no Linear ([guia 02, seção 7](guias/02-linear.md#7-configuração-de-um-time-novo)).
+O **prompt mestre** lê o repositório, mostra um diagnóstico e faz só o que falta:
+
+| Etapa | Não existe | Existe |
+|---|---|---|
+| Fluxo | Instala | Atualiza se houver versão nova (com as migrações) |
+| Casa (Spec Kit, constituição, comandos, ambiente, Linear) | Prepara do zero | Refaz só as fases que falham |
+| Planejamento | Planeja o roadmap | Audita: onde estamos e o que vem |
+
+Fluxo e casa saem num PR único; o roadmap, em outro. Ele para só no plano de ação, nas suas respostas e nos merges. O mesmo prompt serve para projeto novo, projeto existente e atualização. Antes, configure o time no Linear ([guia 02, seção 7](guias/02-linear.md#7-configuração-de-um-time-novo)).
 
 **Trabalhar** (num agente novo, com Terra Medium):
 ```
