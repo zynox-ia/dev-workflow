@@ -1,21 +1,21 @@
-# Prompt 1 — Preparação da Casa (Spec Kit) · v4
+# Prompt 1 — Preparação da Casa (Spec Kit) · v5
 
 > Rode **uma vez por projeto** (e de novo só quando quiser reinstalar ou atualizar o Spec Kit).
 > Agente único, no Traycer, na pasta raiz do repositório do cliente.
-> Antes de rodar: instale o fluxo com o `04-atualizar-fluxo.md` (guia `docs/guias/09-manutencao-do-fluxo.md`).
-> Só depois que o PR desta preparação for aprovado e mesclado é que o **Coordenador** (`03-coordenador.md`) pode rodar.
+> Antes de rodar: instale o fluxo com o `04-atualizar-fluxo.md` (guia `docs/guias/09-manutencao-do-fluxo.md`). Numa instalação nova, o próprio 04 encadeia esta preparação.
+> Só depois que o PR desta preparação for mesclado é que o **Condutor** (`02-condutor.md`) pode rodar.
 > Siga `docs/fluxo/00-convencoes.md` para nomes, status e labels.
 
 ---
 
 ## Seu papel
 
-Você é o **Preparador**. Sua missão é deixar o repositório pronto para o fluxo Spec Kit + Coordenador:
+Você é o **Preparador**. Sua missão é deixar o repositório pronto para o fluxo Spec Kit + Condutor:
 
 1. remover qualquer harness ou esquema de especificação antigo;
 2. fazer uma instalação limpa e verificada do Spec Kit, para **Claude Code e Codex**;
 3. criar a constituição do projeto com base em evidências;
-4. registrar os comandos do projeto no `AGENTS.md` (lido por todo agente) e, no `projeto.md`, a linha de base e o ambiente local (incluindo a cópia de banco para os testes dos Diretores), lidos pelo Coordenador e pelos Diretores;
+4. registrar os comandos do projeto no `AGENTS.md` (lido por todo agente) e, no `projeto.md`, a linha de base e o ambiente local (incluindo a cópia de banco para o ambiente de teste), lidos pelo Condutor e pelos papéis;
 5. conferir o time do Linear deste repositório;
 6. entregar tudo num PR para revisão humana.
 
@@ -43,7 +43,7 @@ git status --porcelain                   # precisa estar vazio
 python3 --version                        # 3.11 ou superior
 uv --version                             # instalado
 claude --version; codex --version        # os agentes que o Traycer usa
-gh auth status                           # usado pelos Diretores para abrir PRs
+gh auth status                           # usado pelo 09 Verificador para abrir PRs
 docker info                              # ambiente local
 test -f docs/fluxo/00-convencoes.md      # pasta do fluxo copiada pelo André
 grep -q 'dev-workflow:inicio' AGENTS.md  # bloco do fluxo instalado pelo 04
@@ -206,8 +206,8 @@ O bloco `dev-workflow` do mesmo arquivo não é seu: não o altere. Texto antigo
 
 **Resultados → `.specify/memory/projeto.md`:**
 ```markdown
-# Projeto — dados para o Coordenador
-> Lido pelo Coordenador e pelos Diretores. Os comandos ficam no AGENTS.md.
+# Projeto — dados para o Condutor
+> Lido pelo Condutor e pelos papéis. Os comandos ficam no AGENTS.md.
 
 branch_base: develop
 
@@ -233,10 +233,10 @@ Descubra, pelos arquivos do projeto (`docker-compose.yml`/`compose.yaml`, `.env.
 2. Comando de migração/seed local, se o projeto tiver.
 3. Comando que sobe a aplicação e a **porta** padrão.
 4. Como subir a aplicação numa **porta alternativa** (variável `PORT`, flag `--port`, etc.), usada para testar worktrees sem derrubar a develop.
-5. Se o `docker compose` aceita um nome de projeto próprio (`-p <nome>`), para cada Diretor ter seu próprio banco. Se o compose fixa a porta do banco no host (ex.: `5432:5432`), registre como cada cópia pode usar outra porta (variável no compose ou arquivo de override); sem isso, os bancos dos Diretores entram em conflito.
-6. Uma URL de verificação (a página inicial ou um endpoint de saúde) e o status esperado.
-7. **Cópia de dados para os Diretores:** o tipo de banco (Postgres, MySQL, SQLite…) e os comandos para **copiar o banco local da develop para o banco isolado de um Diretor** (ex.: `pg_dump` do container da develop → `pg_restore` no container `<repo>-d01`). Teste uma vez com `<repo>-d01` e depois remova esse banco de teste (`docker compose -p <repo>-d01 down -v`).
-8. **Seed:** se o projeto tem script de dados de exemplo, registre o comando. Ele é a alternativa quando o banco da develop estiver vazio.
+5. **Banco de teste:** de preferência um banco a mais **no mesmo servidor** da develop (`<banco>_teste`), com o mesmo usuário e senha do `.env`. Se não for possível, um segundo projeto do compose (`-p <repo>-teste`), registrando como trocar a porta do banco se o compose a fixa no host.
+6. Um **caminho** de verificação (a página inicial ou um endpoint de saúde) e o status esperado; vale para qualquer porta.
+7. **Cópia de dados para o teste:** o tipo de banco (Postgres, MySQL, SQLite…) e os comandos para **recriar o banco de teste como cópia do banco local da develop** (ex.: `dropdb --if-exists` + `createdb` + `pg_dump <develop> | psql <teste>`). Teste uma vez e apague o banco de teste depois.
+8. **Seed e usuário de teste:** registre o comando de seed, alternativa quando o banco da develop estiver vazio. Defina **um usuário fixo de teste** para entrar na aplicação (o que já existe na develop ou o que o seed cria), registrado no bloco *Projeto* do `AGENTS.md` com e-mail e senha de desenvolvimento. Nunca uma credencial real.
 
 **Nunca copie dados de produção para a máquina local.** A cópia é sempre do banco local da develop.
 
@@ -250,13 +250,14 @@ Acrescente ao `projeto.md`:
 ## Ambiente local
 | Item | Valor |
 |---|---|
-| Porta da develop | 3000 |
-| Subir aplicação em porta de teste | `PORT=<porta> ...` |
-| Portas dos Diretores | 3001 (D01) · 3002 (D02) · 3003 (D03) |
-| Banco isolado do Diretor | `docker compose -p <repo>-d0N up -d` (+ como trocar a porta do banco) ou "não suportado" |
-| Copiar banco da develop → Diretor | `<comando de dump>` → `<comando de restore>` (testado em <data>) |
-| Testes usam banco local compartilhado | sim / não (define se as issues paralelas precisam da trava de verificação) |
-| URL de verificação | `http://localhost:3000/...` → 200 |
+| Porta da develop | 3000 (`http://develop.localhost:3000`) |
+| Porta de teste (Condutor) | 3001 (`http://teste.localhost:3001`) |
+| Porta da sessão visual | 3002 (`http://visual.localhost:3002`) |
+| Subir aplicação em outra porta | `PORT=<porta> ...` |
+| Banco de teste | `<banco>_teste` no mesmo servidor, ou `docker compose -p <repo>-teste up -d` (+ como trocar a porta) |
+| Recriar banco de teste como cópia da develop | `<comandos>` (testado em <data>) |
+| Apagar banco de teste | `<comando>` |
+| Caminho de verificação | `/<caminho>` → 200 (develop: `http://develop.localhost:3000/<caminho>`; teste: `http://teste.localhost:3001/<caminho>`) |
 | Arquivos necessários fora do git | `.env` (copiar da pasta principal) |
 ```
 
@@ -270,7 +271,7 @@ O que sobrar no `CLAUDE.md` além do import passa pela mesma regra da Fase 1: s�
 
 **Portão:**
 ```bash
-sed -n '/<!-- projeto:inicio/,/<!-- projeto:fim -->/p' AGENTS.md | grep -c '<comando>\|<porta>\|<Uma linha\|<linguagem\|<Regras curtas'   # 0 (nenhum marcador do modelo)
+sed -n '/<!-- projeto:inicio/,/<!-- projeto:fim -->/p' AGENTS.md | grep -c '<comando>\|<porta>\|<Uma linha\|<linguagem\|<Regras curtas\|<e-mail'   # 0 (nenhum marcador do modelo)
 grep -q 'dev-workflow:inicio' AGENTS.md && grep -q 'dev-workflow:fim' AGENTS.md
 test "$(wc -l < AGENTS.md)" -lt 120
 grep -qxF '@AGENTS.md' CLAUDE.md
@@ -291,7 +292,7 @@ Use o MCP do Linear. **Não altere configurações de time**; só leia, crie lab
    time: <Nome do time> (<PREFIXO>)
    ```
 2. **Status do time:** confira se existem exatamente os de `00-convencoes.md` (Backlog, Ready, In Progress, In Review, Verifying, Done, Canceled). Os que faltarem, liste para o André criar em *Settings → Team → Workflow*.
-3. **Labels de workspace** (seção 6 das convenções): confira o grupo `Type` (Feature, Bug, Hotfix, Refactor, Performance, Security, Infra, Chore, Docs), o grupo `Severity` (S1, S2, S3, S4) e as flags (Breaking Change, DB Migration, Needs Design, Blocked: Client). **Crie as que faltarem**, como labels de workspace.
+3. **Labels de workspace** (seção 6 das convenções): confira o grupo `Type` (Feature, Bug, Hotfix, Refactor, Performance, Security, Infra, Chore, Docs), o grupo `Severity` (S1, S2, S3, S4) e as flags (Breaking Change, DB Migration, Needs Design, Blocked: Client, Preparada, Plano aprovado, Aguardando André, Visual). **Crie as que faltarem**, como labels de workspace.
 4. **Labels de domínio do time:** não crie. Elas nascem com o primeiro projeto, na skill `planejar-etapas`.
 5. **Numeração de specs:** confira se os números `Spec NNN` das issues do time batem com as pastas `specs/NNN-*`. Divergências vão para o relatório (o número é sempre calculado na hora, a partir do Linear: maior `Spec NNN` do time + 1).
 6. **Configurações que só o André faz** (não há ferramenta para isso no MCP). Confira o que for possível ler e liste o restante, conforme `docs/guias/02-linear.md`, seção 7:
@@ -324,5 +325,12 @@ Complete o `preparacao.md` com o log de todas as fases e responda ao humano com 
 - pendências que dependem dele (CLIs ausentes, comandos quebrados, status e automações do Linear a configurar);
 - link do PR.
 
-**O Coordenador só pode rodar depois que este PR for mesclado na develop.**
-Próximo passo sugerido: se o projeto não tem `docs/roadmap/ROADMAP.md`, rodar a skill `planejar-etapas` (modo Planejar ou Assumir) antes de despachar issues.
+## Fase 7 — Continuar
+1. Diga ao André: `PR da preparação aberto: <link>. Faça o merge e me responda "mesclei".` e espere.
+2. Com `mesclei`: confira o merge, `git checkout develop && git pull --ff-only origin develop`.
+3. Sem `docs/roadmap/ROADMAP.md`: siga a skill `docs/fluxo/skills/planejar-etapas/SKILL.md`, modo **A — Planejar** (sistema novo) ou **C — Assumir** (sistema com código), até o André aprovar e mesclar o roadmap.
+4. Termine com:
+   ```
+   ✅ Casa pronta. Para trabalhar, num agente novo:
+   Siga docs/fluxo/02-condutor.md. Modo: manual
+   ```

@@ -7,7 +7,8 @@ Este repositório é o **dev-workflow**: convenções, prompts, skills e guias d
 | Caminho | Conteúdo |
 |---|---|
 | `docs/fluxo/00-convencoes.md` | Regra normativa. Em conflito com qualquer outro arquivo, ela vence |
-| `docs/fluxo/01…04-*.md` | Prompts de papel (preparação, Diretor, Coordenador, atualização), cada um com versão própria no título (`vN`) |
+| `docs/fluxo/01…04-*.md` | Prompts (preparação, Condutor, sessão visual, atualização), cada um com versão própria no título (`vN`) |
+| `docs/fluxo/papeis/` | Um arquivo por papel (01 a 09), lido pelo agente daquele papel |
 | `docs/fluxo/skills/` | Skills instaladas nos projetos (`planejar-etapas`, `registrar-linear`) |
 | `docs/fluxo/linear/` | Guidance, templates e skill `/nova-issue` do agente do Linear |
 | `docs/fluxo/modelos/` | Modelos instalados nos projetos: `AGENTS.md` e `agent-selection-guide.md` (modelo de IA de cada papel) |
@@ -34,6 +35,6 @@ Nunca escreva segredos, dados de clientes, nomes de clientes ou de sistemas de c
 2. Suba `docs/fluxo/VERSION` (MAJOR: exige reconfigurar projetos; MINOR: capacidade nova compatível; PATCH: correção de texto ou comando) e acrescente a entrada no `CHANGELOG.md`, sempre com **"Ação necessária nos projetos"** (ou "nenhuma").
 3. Mudança que os projetos precisam aplicar em arquivos, e que um agente consegue fazer sem rodar a preparação, entra na "Ação necessária" como item **`[04]`**, com instruções exatas: o 04 executa esses itens ao atualizar. Rodar a preparação de novo só em MAJOR.
 4. Commit `<tipo>: <resumo>` (Conventional Commits, resumo em português). PR para a `main`; o merge é do André.
-5. Depois do merge, o André cria a tag `vX.Y.Z` (exatamente esse formato: o 04 e o Coordenador dependem dela).
+5. Depois do merge, o André cria a tag `vX.Y.Z` (exatamente esse formato: o 04 e o Condutor dependem dela).
 
 Detalhes: `docs/guias/09-manutencao-do-fluxo.md`.
