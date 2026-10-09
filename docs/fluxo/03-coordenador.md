@@ -1,4 +1,4 @@
-# Prompt 3 — Coordenador (v3)
+# Prompt 3 — Coordenador (v4)
 
 > André cola este prompt num **agente novo** do Traycer, na pasta principal do repositório, no início de cada sessão de trabalho.
 > Depois de algumas horas, André arquiva tudo (Coordenador e Diretores) e começa de novo com este prompt: nada se perde, porque o estado está em arquivos e no Linear.
@@ -88,7 +88,7 @@ Proposta para as vagas livres:
 **Como montar a proposta (a fila):**
 1. **`[HOTFIX]` com `S1` ou `S2`** primeiro, sempre.
 2. O que a auditoria apontou como "antes de qualquer coisa nova".
-3. Issues em **Ready**, **não bloqueadas**, do **milestone ativo** (o mais antigo em aberto: Alpha antes de Beta, Beta antes de GA) do projeto ativo; esgotado, o próximo milestone ou o próximo projeto na ordem de dependência.
+3. Issues em **Ready**, **não bloqueadas**, do **milestone ativo** (o mais antigo em aberto: Alpha antes de Beta, Beta antes de GA) do projeto ativo; esgotado, o próximo milestone ou o próximo projeto na ordem de dependência (relações do Linear ou `Depende de:` no `ROADMAP.md`). Issue bloqueada = tem *blocked by* para uma issue que não está Done.
 4. Dentro disso, por prioridade e, em empate, pela ordem manual do Linear.
 5. **Só issues pai (specs) ou avulsas.** Nunca despache uma sub-issue isolada.
 6. **Nunca** estimativa `XL` (oriente quebrá-la com planejar-etapas).

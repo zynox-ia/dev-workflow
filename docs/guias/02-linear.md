@@ -86,8 +86,8 @@ As issues pai (specs) são atribuídas ao milestone que ajudam a fechar. A barra
 
 ## 5. Ordem e dependências
 
-- **Dependência entre projetos** (fim → início): "Faturamento" só começa quando "Gestão de clientes" chega a GA. Aparece na linha do tempo.
-- **Relação de bloqueio entre issues** (*blocked by*): a spec 004 bloqueada pela 003. O Coordenador nunca despacha issue bloqueada.
+- **Dependência entre projetos** (fim → início): "Faturamento" só começa quando "Gestão de clientes" chega a GA. Aparece na linha do tempo. O agente não consegue criar essa relação pelo MCP: a skill `planejar-etapas` escreve `Depende de:` na descrição do projeto e no roadmap e lista para você criar no Linear.
+- **Relação de bloqueio entre issues** (*blocked by*): a spec 004 bloqueada pela 003. É ela que define a ordem; a hierarquia issue pai → sub-issue não define. As skills criam a relação pelo MCP. Quando a 003 chega a Done (merge na develop), a 004 fica livre. O Coordenador nunca propõe issue bloqueada, e o Diretor confere de novo ao recebê-la.
 - **Ordem da fila:** milestone mais antigo em aberto → prioridade → ordem manual do Linear.
 
 ## 6. O agente do Linear

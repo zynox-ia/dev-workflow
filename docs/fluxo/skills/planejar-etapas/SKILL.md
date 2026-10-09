@@ -76,9 +76,9 @@ Para cada spec: título no padrão, estimativa (M/L), labels de domínio, bloque
 
 ### A4. Criar no Linear (só após aprovação)
 1. **Labels de domínio** do time que ainda não existem.
-2. **Projetos** (a partir do template com Alpha, Beta e GA), com objetivo, critério de pronto e fora de escopo na descrição, e **dependências** fim → início.
+2. **Projetos** (a partir do template com Alpha, Beta e GA), com objetivo, critério de pronto e fora de escopo na descrição. **Dependência entre projetos:** o MCP do Linear não cria essa relação. Escreva `Depende de: <Projeto>` na primeira linha da descrição do projeto e no `ROADMAP.md`, e inclua na resposta final a lista para o André criar no Linear (no projeto, *Dependencies* → *Blocked by*).
 3. **Critério de saída** na descrição de cada milestone.
-4. **Issues pai** no milestone certo, com labels de `Type` e domínio, estimativa, prioridade e relações *blocked by*. A descrição segue o modelo de issue pai (`docs/fluxo/linear/templates.md`). **Sub-issues não são criadas aqui**: o Diretor cria a partir do `tasks.md`.
+4. **Issues pai** no milestone certo, com labels de `Type` e domínio, estimativa, prioridade e relações *blocked by* (campo `blockedBy` do `save_issue`). Crie na ordem do roadmap, para que a issue que bloqueia já exista quando a bloqueada for criada; confira as relações no fim com `get_issue`. A descrição segue o modelo de issue pai (`docs/fluxo/linear/templates.md`). **Sub-issues não são criadas aqui**: o Diretor cria a partir do `tasks.md`.
 5. Status inicial **Backlog**. Pergunte quais já vão para **Ready**.
 
 ### A5. Gravar o roadmap
