@@ -3,6 +3,17 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) · Versão: [SemVer](https://semver.org/lang/pt-BR/).
 Cada versão lista também a **ação necessária nos projetos**, quando houver.
 
+## [1.2.0] — 2026-10-09
+### Alterado
+- Nome de projeto: `[<IDENTIFICADOR>] <capacidade>` (ex.: `[BRU] Gestão de clientes`), para reconhecer o cliente em qualquer lista do workspace.
+- Projeto é sempre uma capacidade: segurança, qualidade e performance viram specs no projeto que tocam, nunca um projeto próprio.
+- Status de projeto: Planned → In Progress (o ativo) → Completed (GA).
+- Sistema existente (modo C): milestones já atingidos não recebem issues e são apagados pelo André; milestone sem issues nunca é o ativo (Coordenador v5).
+- `planejar-etapas`: a auditoria aponta essas falhas de higiene e ganhou o passo B4, que corrige com o ok do André.
+### Ação necessária nos projetos
+- Rodar o `04-atualizar-fluxo.md` do central.
+- No Traycer, com o fluxo atualizado: `/planejar-etapas auditar e corrigir a higiene do Linear`, aprovar a tabela `atual → padrão`; depois apagar no Linear os milestones que a skill listar.
+
 ## [1.1.2] — 2026-10-09
 ### Corrigido
 - Atualização: o 04 (v3) roda sempre a partir do central (link `raw` na `main`), segue o 04 da versão alvo e executa no mesmo PR as migrações marcadas `[04]` no changelog. Atualizar nunca reinstala Spec Kit, constituição, ambiente ou Linear.

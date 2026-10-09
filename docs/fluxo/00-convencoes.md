@@ -29,9 +29,10 @@ A develop roda na porta do `projeto.md` (padrão 3000) e nunca é derrubada por 
 
 | Nível | Regra |
 |---|---|
-| Time | 1 cliente/sistema = 1 repositório. Nome `<Cliente> <Sistema>`, identificador de 3 letras |
-| Projeto | Capacidade do produto; substantivo, sem número de ordem, sem nome do cliente |
-| Milestones | Sempre `Alpha`, `Beta`, `GA`, com critério de saída na descrição |
+| Time | 1 cliente/sistema = 1 repositório. Nome `<Cliente> <Sistema>`, identificador de 2 a 4 letras (`BRU`) |
+| Projeto | Capacidade do produto. Nome `[<IDENTIFICADOR>] <capacidade>` (`[BRU] Gestão de clientes`): identificador do time entre colchetes (como o `[TIPO]` das issues), espaço, substantivo; sem número de ordem. Nunca um tema transversal (segurança, qualidade, performance): esse trabalho vai como spec no projeto da capacidade que ele toca |
+| Status do projeto | `Planned` ao criar · `In Progress` o projeto ativo · `Completed` com o critério de pronto atendido em produção (GA) |
+| Milestones | Sempre `Alpha`, `Beta`, `GA`, com critério de saída na descrição. Milestone já atingido antes do fluxo (sistema existente) é removido, e o projeto registra na descrição `Alpha/Beta atingidos antes do fluxo` com a evidência. Milestone sem issues nunca é o milestone ativo |
 | Issue pai | Uma spec do Spec Kit. Obrigatória para estimativa M/L (exceto `[FIX]`/`[HOTFIX]`) e para todo `[SECURITY]` |
 | Sub-issue | Uma por fase do `tasks.md`; criada pelo Diretor após a fase de tasks |
 | Issue avulsa | `[FIX]` e `[HOTFIX]` (qualquer estimativa até L), ou estimativa XS/S de qualquer outro tipo, exceto `[SECURITY]` |
