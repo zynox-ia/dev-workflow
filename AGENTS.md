@@ -32,7 +32,8 @@ Nunca escreva segredos, dados de clientes, nomes de clientes ou de sistemas de c
 
 1. Branch `feat/<assunto>` ou `fix/<assunto>` a partir da `main`.
 2. Suba `docs/fluxo/VERSION` (MAJOR: exige reconfigurar projetos; MINOR: capacidade nova compatível; PATCH: correção de texto ou comando) e acrescente a entrada no `CHANGELOG.md`, sempre com **"Ação necessária nos projetos"** (ou "nenhuma").
-3. Commit `<tipo>: <resumo>` (Conventional Commits, resumo em português). PR para a `main`; o merge é do André.
-4. Depois do merge, o André cria a tag `vX.Y.Z` (exatamente esse formato: o 04 e o Coordenador dependem dela).
+3. Mudança que os projetos precisam aplicar em arquivos, e que um agente consegue fazer sem rodar a preparação, entra na "Ação necessária" como item **`[04]`**, com instruções exatas: o 04 executa esses itens ao atualizar. Rodar a preparação de novo só em MAJOR.
+4. Commit `<tipo>: <resumo>` (Conventional Commits, resumo em português). PR para a `main`; o merge é do André.
+5. Depois do merge, o André cria a tag `vX.Y.Z` (exatamente esse formato: o 04 e o Coordenador dependem dela).
 
 Detalhes: `docs/guias/09-manutencao-do-fluxo.md`.
