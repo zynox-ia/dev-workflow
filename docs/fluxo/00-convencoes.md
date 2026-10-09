@@ -13,7 +13,7 @@
 | **01 a 09** (`papeis/`) | Só o Condutor | Faz mais de um papel; toca em outra issue; faz merge |
 | Sessão visual (`03-visual.md`) | André | Muda lógica, API, banco ou permissão |
 
-**Uma issue por vez.** O Condutor só começa a próxima quando a atual está mesclada ou marcada `Aguardando André`.
+**Uma issue por vez, um time por issue.** Ao começar a issue, o Condutor cria os agentes de todos os papéis da trilha; eles recebem o bastão em sequência e são arquivados juntos quando a issue termina. O Condutor só começa a próxima quando a atual está mesclada ou marcada `Aguardando André`.
 
 **Modos do Condutor:** `manual` (o André testa e mescla cada issue) · `preparar` (papéis antes do 06 num lote; perguntas juntas) · `automático` (fila inteira; o Condutor mescla na `develop` quando o 08 aprovou, a verificação passou e a issue não é `[SECURITY]`, `[HOTFIX]`, nem tem `Breaking Change` ou `DB Migration`).
 
@@ -70,7 +70,7 @@ Automações do time: PR aberto → nenhuma ação · merge em `develop` → Don
 
 | Trilha | Papéis, na ordem |
 |---|---|
-| **SDD** | 01 Especificador · 02 Esclarecedor · 03 Arquiteto · 04 Planejador · 05 Analista · 06 Implementador (um por fase) · 07 Convergência · 08 Revisor · 09 Verificador |
+| **SDD** | 01 Especificador · 02 Esclarecedor · 03 Arquiteto · 04 Planejador · 05 Analista · 06 Implementador (um bastão por fase) · 07 Convergência · 08 Revisor · 09 Verificador |
 | **Bug** | 01 Especificador (`bug-assess`) · 06 Implementador (`bug-fix`) · 07 Convergência (`bug-test`) · 08 Revisor · 09 Verificador |
 | **Manutenção** | 06 Implementador · 08 Revisor · 09 Verificador. Mudou comportamento do produto → vira SDD |
 | **Visual** | Sessão com o André (`03-visual.md`), sem spec; issue com a flag `Visual`, fora da fila do Condutor |

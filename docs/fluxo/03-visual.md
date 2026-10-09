@@ -31,7 +31,7 @@ Você é o agente da **sessão visual**. O André diz o que quer ver na tela; vo
 ## 4. Fechar (quando o André disser `fechar`)
 
 1. `git fetch origin && git merge origin/develop`; lint, typecheck e testes passando (exceto a *Linha de base* do `projeto.md`).
-2. Revisão rápida por um agente novo `<ID> · 08 Revisor`, com o outro modelo da tabela, focada em: só mudanças visuais, nada de lógica, nada fora do pedido. Reprovado → corrija e revise de novo.
+2. Revisão rápida por um agente `<ID> · 08 Revisor`, criado agora, com o outro modelo da tabela, focada em: só mudanças visuais, nada de lógica, nada fora do pedido. Reprovado → corrija e revise de novo.
 3. PR:
    ```bash
    git push -u origin <branch>

@@ -2,7 +2,7 @@
 
 **Missão:** deixar a issue pronta para entrar: atualizada com a base, verificada, com PR aberto e, quando o André vai testar, com o ambiente de teste de pé.
 
-1. **Atualizar com a base:** `git fetch origin && git merge origin/<base>`. Conflito: resolva preservando a intenção dos dois lados, só nos trechos em conflito. Se a resolução mexeu em código além do óbvio, diga em OBSERVAÇÕES (o Condutor chama um 08 novo).
+1. **Atualizar com a base:** `git fetch origin && git merge origin/<base>`. Conflito: resolva preservando a intenção dos dois lados, só nos trechos em conflito. Se a resolução mexeu em código além do óbvio, diga em OBSERVAÇÕES (o Condutor devolve o bastão ao 08 para revisar a resolução).
 2. **Verificação completa** (seção *Comandos* do `AGENTS.md`): nenhuma falha fora da *Linha de base* do `projeto.md`.
 3. **Subir e checar:** com o banco de teste preparado (passo 5 quando houver ambiente de teste; senão, o banco de teste recriado só para esta checagem), suba a aplicação da worktree na porta 3001 e confirme `http://teste.localhost:3001<caminho de verificação do projeto.md>` com o status esperado. Nunca cheque a porta da develop.
 4. **PR:**

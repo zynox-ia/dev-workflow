@@ -3,7 +3,8 @@
 | Termo | Significado |
 |---|---|
 | **AGENTS.md** | Arquivo na raiz do repositório com regras e comandos que qualquer agente (Claude Code, Codex) lê ao abrir o projeto. O `CLAUDE.md` só o importa |
-| **Papel** | Uma etapa do fluxo com dono: 01 Especificador a 09 Verificador. Um agente novo por papel, criado pelo Condutor e arquivado ao passar o portão |
+| **Papel** | Uma etapa do fluxo com dono: 01 Especificador a 09 Verificador. Um agente por papel, criado com o time no início da issue e arquivado com ele no fim |
+| **Time** | Os agentes de todos os papéis da trilha de uma issue, criados juntos pelo Condutor e trocados a cada nova issue |
 | **Alpha / Beta / GA** | Milestones padrão de todo projeto: fluxo de ponta a ponta / escopo completo validado / em produção (*General Availability*) |
 | **Back-merge** | Levar uma correção feita na `main` (hotfix) de volta para a `develop` |
 | **Branch** | Linha paralela de histórico no git; cada issue tem a sua |

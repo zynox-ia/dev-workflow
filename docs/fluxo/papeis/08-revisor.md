@@ -17,4 +17,4 @@ VEREDITO: APROVADO | REPROVADO
 ACHADOS: no máximo 5, do mais grave ao menos grave
 ```
 
-**Portão:** `APROVADO`. Reprovado → o Condutor manda os achados a um 06 novo e chama um 08 novo; na segunda reprovação, pergunta ao André.
+**Portão:** `APROVADO`. Reprovado → o Condutor manda os achados ao 06 e devolve o bastão a você para revisar a correção (só ela e o que ela tocou); na segunda reprovação, pergunta ao André.

@@ -24,7 +24,7 @@ O Condutor escolhe a trilha pelo prefixo da issue. A estimativa não escolhe tri
 
 | Trilha | Quando | Papéis |
 |---|---|---|
-| **SDD** | `[FEAT]`, `[REFACTOR]`, `[PERF]`, `[SECURITY]`, `[INFRA]` | 01 Especificador → 02 Esclarecedor → 03 Arquiteto → 04 Planejador → 05 Analista → 06 Implementador (um por fase) → 07 Convergência → 08 Revisor → 09 Verificador |
+| **SDD** | `[FEAT]`, `[REFACTOR]`, `[PERF]`, `[SECURITY]`, `[INFRA]` | 01 Especificador → 02 Esclarecedor → 03 Arquiteto → 04 Planejador → 05 Analista → 06 Implementador (um bastão por fase) → 07 Convergência → 08 Revisor → 09 Verificador |
 | **Bug** | `[FIX]`, `[HOTFIX]` | 01 (`bug-assess`) → 06 (`bug-fix`) → 07 (`bug-test`) → 08 → 09 |
 | **Manutenção** | `[CHORE]`, `[DOCS]` | 06 → 08 → 09. Se mudar comportamento do produto, vira SDD |
 | **Visual** | Ajuste de tela conversado com você | Sessão visual (`03-visual.md`): sem spec, um commit por pedido, revisão rápida, PR |
@@ -46,7 +46,7 @@ BRU-12  [FEAT] Spec 003 — Cadastro e listagem de clientes
 └── BRU-17  [FEAT] Spec 003 Polimento
 ```
 
-Cada sub-issue é implementada por um 06 novo e passa por um portão. Quando passa, vai para In Review. Quando a spec inteira é mesclada, as sub-issues fecham junto com a issue pai.
+Cada sub-issue é um bastão para o 06 do time e passa por um portão. Quando passa, vai para In Review. Quando a spec inteira é mesclada, as sub-issues fecham junto com a issue pai.
 
 ## 4. Portões
 
@@ -64,7 +64,7 @@ Um portão é uma verificação **objetiva, feita pelo Condutor com comandos**, 
 | 08 Revisor | `APROVADO`, com evidência por critério de aceite |
 | 09 Verificador | Develop incorporada, verificação passando, aplicação respondendo, PR aberto |
 
-Portão que falha: o papel é refeito uma vez, com um agente novo. Falhou de novo: o Condutor te pergunta.
+Portão que falha: o Condutor substitui o agente daquele papel e refaz uma vez. Falhou de novo: o Condutor te pergunta.
 
 ## 5. Modos do Condutor
 
@@ -91,7 +91,7 @@ Reprovado: volta para implementação e passa por nova revisão. Duas reprovaç�
 | Problema conhecido em agentes | Proteção no fluxo |
 |---|---|
 | Pular etapas | Um agente por fase; portões por comando |
-| Contexto longo que degrada a qualidade | Um agente novo por papel; o Condutor passa o turno a cada poucas issues |
+| Contexto longo que degrada a qualidade | Um agente por papel, time novo a cada issue; o Condutor passa o turno a cada poucas issues |
 | Aprovar o próprio trabalho | Revisor independente, com o outro modelo |
 | Apagar ou desativar testes para "passar" | Brief proíbe; revisor procura especificamente isso |
 | Fazer mais do que o pedido | "Arquivos previstos" no plano; revisor aponta escopo extra |

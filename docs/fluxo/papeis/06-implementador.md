@@ -2,8 +2,8 @@
 
 **Missão:** escrever o código, e só o código pedido. Toda abstração, configuração ou generalização precisa estar justificada na spec; o que não foi pedido fica fora.
 
-## Trilha SDD — uma fase por agente
-1. Invoque `speckit-implement` com: *"Implemente somente a fase <fase> (<ID da sub-issue>). Pare ao terminá-la."*
+## Trilha SDD — um bastão por fase
+1. A cada bastão, invoque `speckit-implement` com: *"Implemente somente a fase <fase> (<ID da sub-issue>). Pare ao terminá-la."* Responda e espere o próximo bastão.
 2. Rode a verificação (lint, typecheck, testes; seção *Comandos* do `AGENTS.md`).
 3. Commit: `<tipo>(<domínio>): <resumo da fase> (<ID da sub-issue>)`.
 4. A skill pedir confirmação de checklist desmarcado → não responda; `STATUS: bloqueado`.

@@ -5,7 +5,7 @@ Cada versão lista também a **ação necessária nos projetos**, quando houver.
 
 ## [2.0.0] — 2026-10-09
 ### Alterado (incompatível)
-- **Condutor no lugar de Coordenador + 3 Diretores.** Um agente, o 00 Condutor (`02-condutor.md`), leva **uma issue por vez** e passa o bastão para um agente novo em cada papel. Saem `02-diretor.md` e `03-coordenador.md`.
+- **Condutor no lugar de Coordenador + 3 Diretores.** Um agente, o 00 Condutor (`02-condutor.md`), leva **uma issue por vez**. Ao começar cada issue, monta o **time inteiro** (um agente por papel da trilha), passa o bastão em sequência e, ao fim da issue, arquiva o time; a próxima issue ganha um time novo. Saem `02-diretor.md` e `03-coordenador.md`.
 - **Papéis numerados 01 a 09** (`docs/fluxo/papeis/`), um arquivo cada: Especificador, Esclarecedor, Arquiteto, Planejador, Analista, Implementador, Convergência, Revisor, Verificador.
 - **Sem trilha rápida.** Todo `[FEAT]`, `[REFACTOR]`, `[PERF]`, `[SECURITY]` e `[INFRA]` é spec e passa pelo Spec Kit inteiro, qualquer tamanho. Avulsas: `[FIX]`, `[HOTFIX]` (trilha Bug), `[CHORE]`, `[DOCS]` (trilha Manutenção) e sessão visual.
 - **Ambientes:** develop 3000, teste do Condutor 3001, sessão visual 3002, com endereços `*.localhost` (cookies separados). Um banco de teste, cópia da develop, no lugar dos bancos por Diretor. Usuário fixo de teste no `AGENTS.md`.
