@@ -1,4 +1,4 @@
-# Prompt 4 — Instalar ou atualizar o fluxo (v3)
+# Prompt 4 — Instalar ou atualizar o fluxo (v4)
 
 > Rode num **agente novo** do Traycer, na pasta principal de um repositório de cliente, para:
 > - **instalar** o fluxo num projeto que ainda não tem `docs/fluxo/`; ou
@@ -68,7 +68,7 @@ done
 Só as pastas com esses nomes são substituídas; as skills do Spec Kit e outras ficam intactas.
 Assim, no Traycer, o André invoca `/registrar-linear` (Claude Code) ou `$registrar-linear` (Codex) em qualquer agente deste projeto.
 
-## Passo 6 — `AGENTS.md` e `CLAUDE.md`
+## Passo 6 — `AGENTS.md`, `CLAUDE.md` e guia de modelos
 O `AGENTS.md` tem dois blocos: `projeto` (do time, escrito pela preparação) e `dev-workflow` (deste fluxo). Você só substitui o bloco `dev-workflow`.
 ```bash
 M=docs/fluxo/modelos/AGENTS.md
@@ -85,6 +85,8 @@ else
   { cat AGENTS.md; echo; sed -n '/<!-- projeto:inicio/,/<!-- projeto:fim -->/p' "$M"; echo; cat "$TMP/bloco.md"; } > AGENTS.md.tmp \
     && mv AGENTS.md.tmp AGENTS.md                     # AGENTS.md antigo: o conteúdo fica; a preparação (Fases 1 e 4) consolida
 fi
+
+mkdir -p .traycer && cp docs/fluxo/modelos/agent-selection-guide.md .traycer/agent-selection-guide.md   # modelo de cada papel
 
 test -f CLAUDE.md || printf '@AGENTS.md\n' > CLAUDE.md
 grep -qxF '@AGENTS.md' CLAUDE.md || { printf '@AGENTS.md\n\n' | cat - CLAUDE.md > CLAUDE.md.tmp && mv CLAUDE.md.tmp CLAUDE.md; }
@@ -107,12 +109,13 @@ ls .claude/skills .agents/skills | grep -E "planejar-etapas|registrar-linear"
 diff <(sed -n '/<!-- dev-workflow:inicio/,/<!-- dev-workflow:fim -->/p' AGENTS.md) "$TMP/bloco.md"   # sem diferenças
 grep -c '<!-- dev-workflow:inicio' AGENTS.md    # 1
 grep -qxF '@AGENTS.md' CLAUDE.md
-git status --short | grep -vE "^( M|\?\?|A |D | D) (docs/|\.claude/skills/|\.agents/skills/|AGENTS\.md|CLAUDE\.md|\.specify/memory/projeto\.md)" || true   # nada fora do permitido (projeto.md só se uma migração pediu)
+cmp docs/fluxo/modelos/agent-selection-guide.md .traycer/agent-selection-guide.md
+git status --short | grep -vE "^( M|\?\?|A |D | D) (docs/|\.claude/skills/|\.agents/skills/|AGENTS\.md|CLAUDE\.md|\.traycer/agent-selection-guide\.md|\.specify/memory/projeto\.md)" || true   # nada fora do permitido (projeto.md só se uma migração pediu)
 ```
 
 ## Passo 9 — Entregar
 ```bash
-git add docs .claude/skills .agents/skills AGENTS.md CLAUDE.md
+git add docs .claude/skills .agents/skills AGENTS.md CLAUDE.md .traycer/agent-selection-guide.md
 git commit -m "chore(fluxo): atualizar para v<versão>"
 git push -u origin chore/fluxo-v<versão>
 gh pr create --base develop --title "chore(fluxo): atualizar para v<versão>" --body "<resumo do changelog e ações necessárias>"

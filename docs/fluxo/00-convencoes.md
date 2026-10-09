@@ -17,6 +17,8 @@
 
 Máximo de **3 issues em andamento** (uma por Diretor).
 
+**Modelo de cada papel:** definido em `.traycer/agent-selection-guide.md` (instalado pelo 04 a partir de `docs/fluxo/modelos/agent-selection-guide.md`). Quem cria um agente usa o modelo daquela tabela; o revisor independente nunca usa o modelo que implementou.
+
 | Diretor | Porta | Banco isolado |
 |---|---|---|
 | 01 | 3001 | `<repo>-d01` |
@@ -124,6 +126,7 @@ Escalada: trilha rápida que passar dos limites de S (arquivo novo de domínio, 
 | `docs/fluxo/` | Prompts, convenções, skills, guidance do Linear; `VERSION` e `CHANGELOG.md`. Cópia do repositório central: nunca editar no projeto | sim |
 | `AGENTS.md` | Regras e comandos para qualquer agente. Bloco `projeto` (escrito pela preparação, editável) e bloco `dev-workflow` (gerenciado pelo `04-atualizar-fluxo`, nunca editar no projeto). Sem descrição do código; menos de 120 linhas | sim |
 | `CLAUDE.md` | Importa o `AGENTS.md` (`@AGENTS.md`) para o Claude Code | sim |
+| `.traycer/agent-selection-guide.md` | Modelo de cada papel, lido pelo Traycer ao criar agentes. Gerenciado pelo `04-atualizar-fluxo` | sim |
 | `.claude/skills/`, `.agents/skills/` | Skills do Spec Kit e do fluxo (`planejar-etapas`, `registrar-linear`), instaladas pelo `04-atualizar-fluxo` | sim |
 | `docs/roadmap/ROADMAP.md`, `decisoes.md` | Plano e decisões | sim |
 | `.specify/memory/` | Constituição, `projeto.md` (verificação, linha de base, ambiente local, Linear), `preparacao.md` | sim |

@@ -10,7 +10,7 @@ Este repositório é o **dev-workflow**: convenções, prompts, skills e guias d
 | `docs/fluxo/01…04-*.md` | Prompts de papel (preparação, Diretor, Coordenador, atualização), cada um com versão própria no título (`vN`) |
 | `docs/fluxo/skills/` | Skills instaladas nos projetos (`planejar-etapas`, `registrar-linear`) |
 | `docs/fluxo/linear/` | Guidance, templates e skill `/nova-issue` do agente do Linear |
-| `docs/fluxo/modelos/AGENTS.md` | Modelo do `AGENTS.md` dos projetos |
+| `docs/fluxo/modelos/` | Modelos instalados nos projetos: `AGENTS.md` e `agent-selection-guide.md` (modelo de IA de cada papel) |
 | `docs/fluxo/VERSION`, `CHANGELOG.md` | Versão do fluxo (SemVer) e mudanças |
 | `docs/guias/` | Os mesmos padrões explicados para pessoas |
 
