@@ -18,10 +18,11 @@ Num agente novo do Traycer, na pasta do projeto do cliente:
 ```
 Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções para instalar o fluxo neste repositório.
 ```
-Depois de instalado, as atualizações usam o arquivo local:
+Para atualizar, use o mesmo link (nunca a cópia local, que é da versão antiga):
 ```
-Siga as instruções do arquivo docs/fluxo/04-atualizar-fluxo.md.
+Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções para atualizar o fluxo neste repositório.
 ```
+Atualizar não reinstala o Spec Kit nem refaz a preparação: troca a documentação, as skills e o bloco do fluxo no `AGENTS.md`, e aplica as migrações que o changelog pedir, tudo num PR para a develop.
 
 ## Contribuir
 
