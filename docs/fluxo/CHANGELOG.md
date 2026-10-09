@@ -3,6 +3,14 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) · Versão: [SemVer](https://semver.org/lang/pt-BR/).
 Cada versão lista também a **ação necessária nos projetos**, quando houver.
 
+## [1.1.1] — 2026-10-09
+### Corrigido
+- Dependência entre projetos: o MCP do Linear não cria essa relação. `planejar-etapas` passa a escrever `Depende de:` na descrição do projeto e no roadmap e a listar para o André criar no Linear.
+- Relações *blocked by* entre issues: as skills (`planejar-etapas`, `registrar-linear`, `/nova-issue`) usam o campo `blockedBy`, criam na ordem do roadmap e perguntam quando a issue citada ainda não existe. Coordenador (v4) define "bloqueada" e usa o `ROADMAP.md` para a ordem dos projetos.
+### Ação necessária nos projetos
+- Rodar `04-atualizar-fluxo.md`.
+- No Linear, atualizar a skill pessoal `/nova-issue` com o texto novo.
+
 ## [1.1.0] — 2026-10-09
 ### Adicionado
 - `AGENTS.md` na raiz de cada projeto, lido por qualquer agente (Codex direto; Claude Code via `CLAUDE.md` com `@AGENTS.md`). Modelo em `docs/fluxo/modelos/AGENTS.md`, com dois blocos: `projeto` (comandos e regras do projeto) e `dev-workflow` (regras do fluxo, gerenciado pelo 04).
