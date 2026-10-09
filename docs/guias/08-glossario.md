@@ -2,6 +2,7 @@
 
 | Termo | Significado |
 |---|---|
+| **AGENTS.md** | Arquivo na raiz do repositório com regras e comandos que qualquer agente (Claude Code, Codex) lê ao abrir o projeto. O `CLAUDE.md` só o importa |
 | **Agente de fase** | Agente criado pelo Diretor para executar uma única fase (specify, plan, implement…) e arquivado ao terminar |
 | **Alpha / Beta / GA** | Milestones padrão de todo projeto: fluxo de ponta a ponta / escopo completo validado / em produção (*General Availability*) |
 | **Back-merge** | Levar uma correção feita na `main` (hotfix) de volta para a `develop` |

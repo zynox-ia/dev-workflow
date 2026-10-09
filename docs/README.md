@@ -32,6 +32,7 @@ Os guias explicam; o arquivo [`fluxo/00-convencoes.md`](fluxo/00-convencoes.md) 
 | [`fluxo/02-diretor.md`](fluxo/02-diretor.md) | Enviado pelo Coordenador a cada Diretor |
 | [`fluxo/03-coordenador.md`](fluxo/03-coordenador.md) | Início de cada sessão de trabalho |
 | [`fluxo/04-atualizar-fluxo.md`](fluxo/04-atualizar-fluxo.md) | Instalar ou atualizar o fluxo a partir do repositório central |
+| [`fluxo/modelos/AGENTS.md`](fluxo/modelos/AGENTS.md) | Modelo do `AGENTS.md` da raiz dos projetos (regras e comandos para qualquer agente) |
 | [`fluxo/skills/registrar-linear/`](fluxo/skills/registrar-linear/) | Registrar demandas no padrão pelo Traycer; sub-issues das specs |
 | [`fluxo/skills/planejar-etapas/`](fluxo/skills/planejar-etapas/) | Planejar e auditar projetos, specs e a ordem do trabalho |
 | [`fluxo/linear/`](fluxo/linear/) | Guidance, templates e skills (`/nova-issue`) para o agente do Linear |

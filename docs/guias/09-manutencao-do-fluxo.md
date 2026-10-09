@@ -9,6 +9,7 @@ O repositório público [`zynox-ia/dev-workflow`](https://github.com/zynox-ia/de
 ```
 dev-workflow/
 ├── README.md                    como usar e como contribuir
+├── AGENTS.md                    regras para agentes que editam o próprio fluxo (não vai para os projetos)
 └── docs/
     ├── README.md
     ├── guias/                   documentação explicativa
@@ -16,11 +17,12 @@ dev-workflow/
         ├── VERSION              versão atual (ex.: 1.2.0)
         ├── CHANGELOG.md         o que mudou em cada versão e a ação necessária nos projetos
         ├── 00-convencoes.md … 04-atualizar-fluxo.md
+        ├── modelos/             AGENTS.md (modelo instalado nos projetos)
         ├── skills/              planejar-etapas, registrar-linear
         └── linear/              guidance, templates e skills do agente do Linear
 ```
 
-O que **não** fica no central, porque é de cada projeto: `docs/roadmap/`, `.specify/` (constituição, `projeto.md`) e `.pipeline/`.
+O que **não** fica no central, porque é de cada projeto: `docs/roadmap/`, `.specify/` (constituição, `projeto.md`), `.pipeline/` e o bloco `projeto` do `AGENTS.md`.
 
 Por ser público, qualquer agente baixa o fluxo com `git clone`, sem precisar de autenticação. Por isso, **nunca coloque no fluxo** segredos, dados de clientes ou nomes de sistemas: o conteúdo específico de cada projeto vive no repositório do projeto.
 
@@ -58,7 +60,22 @@ O agente copia `docs/guias/` e `docs/fluxo/` da versão pedida, instala as skill
 
 O Coordenador avisa na abertura de cada sessão quando o projeto está numa versão mais antiga que a última do central.
 
-## 5. Skills: onde cada uma é usada
+## 5. `AGENTS.md` dos projetos
+
+Todo agente que abre o repositório (Claude Code, Codex, um agente de fase, você numa conversa avulsa no Traycer) lê o `AGENTS.md` da raiz antes de qualquer coisa. O Codex lê direto; o Claude Code lê o `CLAUDE.md`, que só contém `@AGENTS.md`. Assim, as regras do fluxo valem até para quem não recebeu um prompt de papel.
+
+O arquivo tem dois blocos, marcados com comentários HTML:
+
+| Bloco | Conteúdo | Quem escreve |
+|---|---|---|
+| `projeto` | Uma linha sobre o sistema, a tabela de comandos (instalar, subir, migrations, lint, typecheck, testes) e as regras próprias do projeto | A preparação da casa (fase 4); depois, o time, quando um comando muda |
+| `dev-workflow` | Regras do fluxo: git, Spec Kit, qualidade, dados e segredos, Linear, onde está cada coisa | O `04-atualizar-fluxo`, a partir de `docs/fluxo/modelos/AGENTS.md`. Nunca editar no projeto |
+
+**O que nunca entra:** descrição da arquitetura, mapa de pastas do código, resumo das features. Isso desatualiza rápido e gasta o contexto de todo agente em toda tarefa; cada agente lê o código que a sua tarefa exige. Limite: menos de 120 linhas.
+
+Mudar uma regra do fluxo = mudar o modelo no central e publicar uma versão. Mudar um comando do projeto = editar o bloco `projeto` num PR do próprio projeto.
+
+## 6. Skills: onde cada uma é usada
 
 | Skill | Onde vive | Quem usa | Para quê |
 |---|---|---|---|

@@ -1,4 +1,4 @@
-# Prompt 1 — Preparação da Casa (Spec Kit) · v3
+# Prompt 1 — Preparação da Casa (Spec Kit) · v4
 
 > Rode **uma vez por projeto** (e de novo só quando quiser reinstalar ou atualizar o Spec Kit).
 > Agente único, no Traycer, na pasta raiz do repositório do cliente.
@@ -15,11 +15,11 @@ Você é o **Preparador**. Sua missão é deixar o repositório pronto para o fl
 1. remover qualquer harness ou esquema de especificação antigo;
 2. fazer uma instalação limpa e verificada do Spec Kit, para **Claude Code e Codex**;
 3. criar a constituição do projeto com base em evidências;
-4. registrar os comandos de verificação, a linha de base e o ambiente local (incluindo a cópia de banco para os testes dos Diretores), **para uso exclusivo do Coordenador e dos Diretores**;
+4. registrar os comandos do projeto no `AGENTS.md` (lido por todo agente) e, no `projeto.md`, a linha de base e o ambiente local (incluindo a cópia de banco para os testes dos Diretores), lidos pelo Coordenador e pelos Diretores;
 5. conferir o time do Linear deste repositório;
 6. entregar tudo num PR para revisão humana.
 
-Você **não implementa nenhuma feature**, **não altera código da aplicação** e **não escreve contexto do projeto em `AGENTS.md`/`CLAUDE.md`**. Os agentes de fase descobrem o código que precisam durante a própria tarefa; não carregue o contexto deles antes da hora.
+Você **não implementa nenhuma feature** e **não altera código da aplicação**. No `AGENTS.md` você escreve só **comandos e regras**, nunca descrição da arquitetura ou do código: os agentes de fase descobrem o código que precisam durante a própria tarefa; não carregue o contexto deles antes da hora.
 
 ---
 
@@ -46,9 +46,10 @@ claude --version; codex --version        # os agentes que o Traycer usa
 gh auth status                           # usado pelos Diretores para abrir PRs
 docker info                              # ambiente local
 test -f docs/fluxo/00-convencoes.md      # pasta do fluxo copiada pelo André
+grep -q 'dev-workflow:inicio' AGENTS.md  # bloco do fluxo instalado pelo 04
 ```
 
-- Sem `docs/fluxo/`: **pare** e peça ao André para instalar o fluxo primeiro com o `04-atualizar-fluxo.md` do repositório central (guia 09).
+- Sem `docs/fluxo/` ou sem o bloco `dev-workflow` no `AGENTS.md`: **pare** e peça ao André para instalar o fluxo primeiro com o `04-atualizar-fluxo.md` do repositório central (guia 09).
 
 - Árvore suja: **pare** e peça ao humano para commitar ou descartar as mudanças.
 - Sem `uv`: instale (`curl -LsSf https://astral.sh/uv/install.sh | sh`).
@@ -98,7 +99,7 @@ Leia também, sem alterar ainda: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github
 
 **C — Perguntar:** qualquer item que você não consegue classificar com certeza.
 
-**Arquivos de instrução (`AGENTS.md`, `CLAUDE.md` e afins):** remova as seções que falam do harness ou do processo antigo. Mantenha o que for regra útil e curta do projeto. Se o arquivo ficar vazio, apague-o. **Não acrescente conteúdo novo.**
+**Arquivos de instrução (`AGENTS.md`, `CLAUDE.md` e afins):** remova as seções que falam do harness ou do processo antigo e as descrições longas do código. **Nunca altere o bloco entre `<!-- dev-workflow:inicio -->` e `<!-- dev-workflow:fim -->`** do `AGENTS.md`. Anote as regras úteis e curtas do projeto que sobrarem: elas vão para a seção *Regras do projeto* do `AGENTS.md` na Fase 4. Os demais arquivos de instrução de outras ferramentas (`GEMINI.md`, `.cursorrules`, `.github/copilot-instructions.md`) ficam só se tiverem regra útil; se ficarem vazios, apague-os.
 
 ### 1.3 Confirmação
 Lista **C** não vazia: mostre as três listas ao humano e **pare** até ele responder sobre os itens C. Lista C vazia: siga.
@@ -184,7 +185,7 @@ Commit: `docs: constituição do projeto (Spec Kit)`.
 
 ---
 
-## Fase 4 — Comandos de verificação e linha de base (uso do Coordenador e dos Diretores)
+## Fase 4 — Comandos, linha de base e ambiente local
 
 ### 4.1 Identifique os comandos
 A partir dos scripts do manifesto (`package.json`, `Makefile`, `pyproject.toml`…) e do CI, identifique o comando de: **instalar dependências**, **lint**, **typecheck**, **testes**.
@@ -195,27 +196,35 @@ Se o CI e os scripts divergirem, prefira o que o CI executa.
 - Para testes, rode a suíte que o CI roda em PRs. Não rode testes ponta a ponta (e2e) se o CI não os roda em PRs.
 - Guarde a saída de cada comando em `/tmp` apenas para extrair as falhas; não copie saídas longas para o repositório.
 
-### 4.3 Registre em `.specify/memory/projeto.md`
+### 4.3 Registre
+**Comandos → `AGENTS.md`**, no bloco entre `<!-- projeto:inicio -->` e `<!-- projeto:fim -->` (o modelo está em `docs/fluxo/modelos/AGENTS.md`):
+- *Projeto*: uma linha sobre o que o sistema faz e a stack, tirada do README e do manifesto;
+- *Comandos*: instalar, lint, typecheck, testes e um teste isolado (como rodar um único arquivo de teste); os de serviços, migrations, seed e aplicação entram na 4.4;
+- *Regras do projeto*: as regras curtas anotadas na Fase 1, cada uma ainda verdadeira no código. Sem nenhuma, remova a seção.
+
+O bloco `dev-workflow` do mesmo arquivo não é seu: não o altere. Texto antigo que tenha ficado fora dos dois blocos (de um `AGENTS.md` anterior ao fluxo) é movido para *Regras do projeto*, se for regra útil, ou removido. No fim, o arquivo tem só o cabeçalho do modelo e os dois blocos, com **menos de 120 linhas**.
+
+**Resultados → `.specify/memory/projeto.md`:**
 ```markdown
 # Projeto — dados para o Coordenador
-> Este arquivo é lido pelo Coordenador e pelos Diretores; os agentes de fase recebem no brief só o comando que cada fase precisa.
+> Lido pelo Coordenador e pelos Diretores. Os comandos ficam no AGENTS.md.
 
 branch_base: develop
 
-## Comandos de verificação
-| Ação | Comando | Resultado em <data> | Duração |
-|---|---|---|---|
-| Instalar | ... | ok | ... |
-| Lint | ... | ok / N erros | ... |
-| Typecheck | ... | ok / N erros | ... |
-| Testes | ... | X passaram, Y falharam | ... |
+## Verificação em <data>
+| Ação | Resultado | Duração |
+|---|---|---|
+| Instalar | ok | ... |
+| Lint | ok / N erros | ... |
+| Typecheck | ok / N erros | ... |
+| Testes | X passaram, Y falharam | ... |
 
 ## Linha de base — commit <sha>
 Falhas que já existem antes de qualquer feature (não são responsabilidade das issues):
 - <teste ou erro> — <arquivo>
 ```
 
-Comando que não existe ou não funciona: registre como **ausente** ou **quebrado**, com o erro resumido em uma linha. Não tente consertar.
+Comando que não existe ou não funciona: registre como **ausente** ou **quebrado** no `AGENTS.md`, com o erro resumido em uma linha no `projeto.md`. Não tente consertar.
 
 ### 4.4 Ambiente local
 Descubra, pelos arquivos do projeto (`docker-compose.yml`/`compose.yaml`, `.env.example`, scripts do manifesto, README), **como o projeto sobe localmente**, e teste de verdade uma vez:
@@ -234,28 +243,41 @@ Descubra, pelos arquivos do projeto (`docker-compose.yml`/`compose.yaml`, `.env.
 Suba os serviços e a aplicação, confirme que a URL de verificação responde e **encerre o servidor da aplicação** ao final (deixe os containers como estavam antes, se já existiam).
 Se faltar `.env`, crie a partir do `.env.example` **somente se** ele não exigir segredos; caso exija, registre a pendência e pergunte ao humano. Nunca invente valores de credenciais.
 
+Complete a tabela *Comandos* do `AGENTS.md` com: subir serviços, migrations, seed e subir a aplicação (com a porta).
+
 Acrescente ao `projeto.md`:
 ```markdown
 ## Ambiente local
 | Item | Valor |
 |---|---|
-| Subir serviços | `docker compose up -d` |
-| Migração/seed local | `...` ou "não há" |
-| Subir aplicação (develop) | `...` |
 | Porta da develop | 3000 |
 | Subir aplicação em porta de teste | `PORT=<porta> ...` |
 | Portas dos Diretores | 3001 (D01) · 3002 (D02) · 3003 (D03) |
 | Banco isolado do Diretor | `docker compose -p <repo>-d0N up -d` (+ como trocar a porta do banco) ou "não suportado" |
 | Copiar banco da develop → Diretor | `<comando de dump>` → `<comando de restore>` (testado em <data>) |
-| Seed de dados de exemplo | `...` ou "não há" |
 | Testes usam banco local compartilhado | sim / não (define se as issues paralelas precisam da trava de verificação) |
 | URL de verificação | `http://localhost:3000/...` → 200 |
 | Arquivos necessários fora do git | `.env` (copiar da pasta principal) |
 ```
 
-**Portão:** `projeto.md` existe, com `branch_base: develop`, as quatro ações de verificação preenchidas (comando + resultado, ou "ausente"/"quebrado") e a seção **Ambiente local** com a URL de verificação e a cópia de banco testadas (ou marcadas "não suportado" com o motivo).
+### 4.5 `CLAUDE.md`
+O Codex lê o `AGENTS.md` sozinho; o Claude Code lê o `CLAUDE.md`. Garanta que o `CLAUDE.md` importe o `AGENTS.md`:
+```bash
+test -f CLAUDE.md || printf '@AGENTS.md\n' > CLAUDE.md
+grep -qxF '@AGENTS.md' CLAUDE.md || { printf '@AGENTS.md\n\n' | cat - CLAUDE.md > CLAUDE.md.tmp && mv CLAUDE.md.tmp CLAUDE.md; }
+```
+O que sobrar no `CLAUDE.md` além do import passa pela mesma regra da Fase 1: só regra curta e útil; o resto sai (de preferência movido para *Regras do projeto* do `AGENTS.md`).
 
-Commit: `docs: comandos de verificação e linha de base`.
+**Portão:**
+```bash
+sed -n '/<!-- projeto:inicio/,/<!-- projeto:fim -->/p' AGENTS.md | grep -c '<comando>\|<porta>\|<Uma linha\|<linguagem\|<Regras curtas'   # 0 (nenhum marcador do modelo)
+grep -q 'dev-workflow:inicio' AGENTS.md && grep -q 'dev-workflow:fim' AGENTS.md
+test "$(wc -l < AGENTS.md)" -lt 120
+grep -qxF '@AGENTS.md' CLAUDE.md
+```
+E `projeto.md` existe, com `branch_base: develop`, as quatro ações de verificação com resultado (ou "ausente"/"quebrado") e a seção **Ambiente local** com a URL de verificação e a cópia de banco testadas (ou marcadas "não suportado" com o motivo).
+
+Commit: `docs: AGENTS.md, linha de base e ambiente local`.
 
 ---
 
@@ -294,7 +316,8 @@ gh pr create --base develop --title "chore: preparação Spec Kit" --body-file .
 ```
 
 Complete o `preparacao.md` com o log de todas as fases e responda ao humano com um relatório curto:
-- o que foi removido (e o que foi enxugado em `AGENTS.md`/`CLAUDE.md`);
+- o que foi removido e o que foi enxugado nos arquivos de instrução;
+- o bloco de projeto do `AGENTS.md` (comandos e regras) e o tamanho final do arquivo;
 - versão do Spec Kit e integrações instaladas;
 - comandos de verificação e falhas pré-existentes;
 - ambiente local: portas, banco isolado e cópia de dados (testados ou não suportados);
