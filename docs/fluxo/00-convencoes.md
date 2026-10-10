@@ -124,10 +124,10 @@ Aprovação do `plan.md` pelo André antes de implementar: `[SECURITY]` ou flag 
 |---|---|---|
 | `docs/guias/` | Documentação explicativa | sim |
 | `docs/fluxo/` | Prompts, convenções, skills, guidance do Linear; `VERSION` e `CHANGELOG.md`. Cópia do repositório central: nunca editar no projeto | sim |
-| `AGENTS.md` | Regras e comandos para qualquer agente. Bloco `projeto` (escrito pela preparação, editável) e bloco `dev-workflow` (gerenciado pelo `04-atualizar-fluxo`, nunca editar no projeto). Sem descrição do código; menos de 120 linhas | sim |
+| `AGENTS.md` | Regras e comandos para qualquer agente. Bloco `projeto` (escrito pela preparação, editável) e bloco `dev-workflow` (gerenciado pelo `04-preparador`, nunca editar no projeto). Sem descrição do código; menos de 120 linhas | sim |
 | `CLAUDE.md` | Importa o `AGENTS.md` (`@AGENTS.md`) para o Claude Code | sim |
-| `.traycer/agent-selection-guide.md` | Modelo de cada papel, lido pelo Traycer ao criar agentes. Gerenciado pelo `04-atualizar-fluxo` | sim |
-| `.claude/skills/`, `.agents/skills/` | Skills do Spec Kit e do fluxo (`planejar-etapas`, `registrar-linear`), instaladas pelo `04-atualizar-fluxo` | sim |
+| `.traycer/agent-selection-guide.md` | Modelo de cada papel, lido pelo Traycer ao criar agentes. Gerenciado pelo `04-preparador` | sim |
+| `.claude/skills/`, `.agents/skills/` | Skills do Spec Kit e do fluxo (`planejar-etapas`, `registrar-linear`), instaladas pelo `04-preparador` | sim |
 | `docs/roadmap/ROADMAP.md`, `decisoes.md` | Plano e decisões | sim |
 | `.specify/memory/` | Constituição, `projeto.md` (verificação, linha de base, ambiente local, Linear), `preparacao.md` | sim |
 | `docs/fluxo/papeis/` | Um arquivo por papel (01 a 09) | sim |

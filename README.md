@@ -19,7 +19,7 @@ Num agente novo do Traycer, na pasta do projeto do cliente (sempre pelo link, nu
 ```
 Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual
 ```
-Um prompt só, sempre o do **00 Condutor**, em qualquer situação: projeto novo, projeto existente, fluxo antigo ou dia a dia. Na abertura ele faz o diagnóstico e, se algo falta, cria o agente `Preparador`, que faz só o necessário:
+Um prompt só, sempre o do **00 Condutor**, em qualquer situação: projeto novo, projeto existente, fluxo antigo ou dia a dia. Na abertura ele faz o diagnóstico e, se algo falta, executa ele mesmo o roteiro de preparação (`docs/fluxo/04-preparador.md`), fazendo só o necessário:
 
 | Etapa | Não existe | Existe |
 |---|---|---|
@@ -27,7 +27,7 @@ Um prompt só, sempre o do **00 Condutor**, em qualquer situação: projeto novo
 | Casa (Spec Kit, constituição, comandos, ambiente, Linear) | Prepara do zero | Refaz só as fases que falham |
 | Planejamento | Planeja o roadmap | Audita: onde estamos e o que vem |
 
-Fluxo e casa saem num PR único; o roadmap, em outro. Com a casa pronta, o próprio Condutor segue para as issues, uma por vez. Troque `manual` por `preparar` ou `automático` (o automático não instala nem prepara: exige a casa pronta).
+Fluxo e casa saem num PR único; o roadmap, em outro. Com a casa pronta, ele passa o turno para um Condutor de conversa limpa, que segue para as issues, uma por vez. Troque `manual` por `preparar` ou `automático` (o automático não instala nem prepara: exige a casa pronta).
 
 ## Contribuir
 

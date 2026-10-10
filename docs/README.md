@@ -32,7 +32,7 @@ Os guias explicam; o arquivo [`fluxo/00-convencoes.md`](fluxo/00-convencoes.md) 
 | [`fluxo/02-condutor.md`](fluxo/02-condutor.md) | **O prompt do André.** Garante a casa e conduz as issues, uma por vez: modos manual, preparar e automático |
 | [`fluxo/03-visual.md`](fluxo/03-visual.md) | Sessão visual conversada, sem spec |
 | [`fluxo/papeis/`](fluxo/papeis/) | Os papéis 01 a 09, um arquivo cada |
-| [`fluxo/04-atualizar-fluxo.md`](fluxo/04-atualizar-fluxo.md) | Preparador (criado pelo Condutor): instala ou atualiza o fluxo, prepara a casa e planeja ou audita |
+| [`fluxo/04-preparador.md`](fluxo/04-preparador.md) | Roteiro de preparação, executado pelo Condutor na abertura: instala ou atualiza o fluxo, prepara a casa e planeja ou audita |
 | [`fluxo/modelos/AGENTS.md`](fluxo/modelos/AGENTS.md) | Modelo do `AGENTS.md` da raiz dos projetos (regras e comandos para qualquer agente) |
 | [`fluxo/modelos/agent-selection-guide.md`](fluxo/modelos/agent-selection-guide.md) | Modelo de IA de cada papel, instalado em `.traycer/` |
 | [`fluxo/skills/registrar-linear/`](fluxo/skills/registrar-linear/) | Registrar demandas no padrão pelo Traycer; sub-issues das specs |
@@ -45,7 +45,7 @@ Os guias explicam; o arquivo [`fluxo/00-convencoes.md`](fluxo/00-convencoes.md) 
 ```
 Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual
 ```
-Um prompt só, sempre o do **00 Condutor**, em qualquer situação: projeto novo, projeto existente, fluxo antigo ou dia a dia. Na abertura ele faz o diagnóstico e, se algo falta, cria o agente `Preparador`, que faz só o necessário:
+Um prompt só, sempre o do **00 Condutor**, em qualquer situação: projeto novo, projeto existente, fluxo antigo ou dia a dia. Na abertura ele faz o diagnóstico e, se algo falta, executa ele mesmo o roteiro de preparação (`docs/fluxo/04-preparador.md`), fazendo só o necessário:
 
 | Etapa | Não existe | Existe |
 |---|---|---|
@@ -53,7 +53,7 @@ Um prompt só, sempre o do **00 Condutor**, em qualquer situação: projeto novo
 | Casa (Spec Kit, constituição, comandos, ambiente, Linear) | Prepara do zero | Refaz só as fases que falham |
 | Planejamento | Planeja o roadmap | Audita: onde estamos e o que vem |
 
-Fluxo e casa saem num PR único; o roadmap, em outro. Com a casa pronta, o próprio Condutor segue para as issues, uma por vez. Troque `manual` por `preparar` ou `automático` (o automático não instala nem prepara: exige a casa pronta). Antes, configure o time no Linear ([guia 02, seção 7](guias/02-linear.md#7-configuração-de-um-time-novo)).
+Fluxo e casa saem num PR único; o roadmap, em outro. Com a casa pronta, ele passa o turno para um Condutor de conversa limpa, que segue para as issues, uma por vez. Troque `manual` por `preparar` ou `automático` (o automático não instala nem prepara: exige a casa pronta). Antes, configure o time no Linear ([guia 02, seção 7](guias/02-linear.md#7-configuração-de-um-time-novo)).
 
 **Ajuste visual** (num agente novo):
 ```

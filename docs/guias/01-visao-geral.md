@@ -48,7 +48,7 @@ Backlog → Ready → In Progress → In Review → Verifying → Done
 
 ## Um prompt só: o Condutor
 
-Você cola sempre o mesmo prompt, num agente novo (Terra Medium), na pasta do repositório. Na abertura, o Condutor confere a casa: se o fluxo não está instalado ou está desatualizado, se a preparação falta ou se não há roadmap, ele cria o agente `Preparador`, que resolve isso com você (PRs e perguntas). Com a casa pronta, ele segue para as issues.
+Você cola sempre o mesmo prompt, num agente novo (Terra Medium), na pasta do repositório. Na abertura, o Condutor confere a casa: se o fluxo não está instalado ou está desatualizado, se a preparação falta ou se não há roadmap, ele mesmo resolve isso com você, seguindo o roteiro `04-preparador.md` (PRs e perguntas). Com a casa pronta, ele passa o turno para um Condutor de conversa limpa, que segue para as issues.
 
 ## Os três modos
 

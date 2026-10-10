@@ -36,10 +36,11 @@ Você **não** escreve código, spec, plano nem revisão: quem faz são os papé
 ## 3. Abertura
 
 ### 3.0 A casa (antes de qualquer issue)
-1. **Diagnóstico:** rode o *Passo 0 — Diagnóstico* de `https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md` (somente leitura) e mostre o resultado ao André no formato de lá: **A. Fluxo** (não instalado · desatualizado · em dia), **B. Casa** (não preparada · fases pendentes · pronta), **C. Plano** (sem roadmap · com roadmap).
-2. **Algo a fazer em A, B ou C** (e modo `manual` ou `preparar`): com o ok do André, crie o agente auxiliar **`Preparador`** (modelo do Condutor na tabela; se a tabela ainda não existe no projeto, Terra Medium) com: *"Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório. Você foi chamado pelo 00 Condutor: o André já aprovou este plano: <plano>. Responda a mim (Condutor) em cada ponto de parada."* O Preparador instala ou atualiza o fluxo, prepara a casa e planeja ou audita. Você só acompanha: repasse ao André as perguntas e os pedidos de merge do Preparador, e devolva as respostas dele. Quando o Preparador responder `✅ Casa pronta`, arquive-o.
-3. **Modo `automático`:** não instala, não atualiza e não prepara (exigem merges do André). Casa não pronta → encerre com o relatório (seção 13) dizendo o que falta. Só uma versão mais nova do fluxo → registre no relatório e siga.
-4. **Tudo em dia:** siga para o passo 1.
+1. **Diagnóstico:** rode o *Passo 0 — Diagnóstico* de `https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-preparador.md` (somente leitura) e mostre o resultado ao André no formato de lá: **A. Fluxo** (não instalado · desatualizado · em dia), **B. Casa** (não preparada · fases pendentes · pronta), **C. Plano** (sem roadmap · com roadmap).
+2. **Algo a fazer em A, B ou C** (e modo `manual` ou `preparar`): com o ok do André, **você mesmo** executa o roteiro `https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-preparador.md`, do Passo 1 ao 13 (o diagnóstico e a aprovação já foram feitos). Ele instala ou atualiza o fluxo, prepara a casa (chamando o `01-preparacao-da-casa.md`) e planeja ou audita. Perguntas e pedidos de merge vão direto ao André.
+3. **Casa pronta depois do roteiro:** a preparação deixou esta conversa longa. Antes da primeira issue, **passe o turno** (seção 12): o `00 Condutor · turno 2` começa o trabalho com a conversa limpa, lendo o estado dos arquivos.
+4. **Modo `automático`:** não instala, não atualiza e não prepara (exigem merges do André). Casa não pronta → encerre com o relatório (seção 13) dizendo o que falta. Só uma versão mais nova do fluxo → registre no relatório e siga.
+5. **Tudo em dia:** siga para a seção 3.1.
 
 ### 3.1 Abertura do trabalho
 1. **Conferência rápida** (na pasta principal, com `git fetch origin`):

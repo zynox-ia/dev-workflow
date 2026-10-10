@@ -5,7 +5,8 @@ Cada versão lista também a **ação necessária nos projetos**, quando houver.
 
 ## [2.2.0] — 2026-10-10
 ### Alterado
-- **O Condutor é o único prompt do André**, sempre pelo link do central: `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual`. Na abertura (Condutor v5, seção 3.0), ele faz o diagnóstico e, se o fluxo não está instalado ou em dia, se a casa não está preparada ou se não há roadmap, cria o agente auxiliar `Preparador`, que executa o `04-atualizar-fluxo.md` (v8) e responde ao Condutor. Com a casa pronta, segue para as issues. O modo automático não instala nem prepara.
+- **O Condutor é o único prompt do André**, sempre pelo link do central: `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual`. Na abertura (Condutor v5, seção 3.0), ele faz o diagnóstico e, se o fluxo não está instalado ou em dia, se a casa não está preparada ou se não há roadmap, executa ele mesmo o roteiro de preparação. Depois passa o turno para um Condutor de conversa limpa, que segue para as issues. O modo automático não instala nem prepara.
+- `04-atualizar-fluxo.md` renomeado para **`04-preparador.md`** (v9): é o roteiro que o Condutor executa. O link antigo deixa de existir no central.
 - `PROMPTS.md` na raiz do repositório central com o prompt e os modos.
 ### Ação necessária nos projetos
 - Nenhuma. A partir de agora, use o prompt do Condutor pelo link do central.

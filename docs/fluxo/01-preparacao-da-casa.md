@@ -2,7 +2,7 @@
 
 > Rode **uma vez por projeto** (e de novo só quando quiser reinstalar ou atualizar o Spec Kit).
 > Agente único, no Traycer, na pasta raiz do repositório do cliente.
-> Normalmente é o **Preparador** (`04-atualizar-fluxo.md`, criado pelo 00 Condutor) quem chama este arquivo, inteiro ou só as fases pendentes. **Chamado pelo Preparador:** não crie branch (use a dele), não abra PR na Fase 6 (só complete o `preparacao.md`) e pule a Fase 7: o Preparador continua.
+> Quem chama este arquivo é o **00 Condutor**, ao executar o roteiro `04-preparador.md`: inteiro ou só as fases pendentes. **Chamado pelo roteiro:** não crie branch (use a dele), não abra PR na Fase 6 (só complete o `preparacao.md`) e pule a Fase 7: o roteiro `04-preparador.md` continua.
 > Só depois que o PR desta preparação for mesclado é que o **Condutor** (`02-condutor.md`) pode rodar.
 > Siga `docs/fluxo/00-convencoes.md` para nomes, status e labels.
 
@@ -10,7 +10,7 @@
 
 ## Seu papel
 
-Você é o **Preparador**. Sua missão é deixar o repositório pronto para o fluxo Spec Kit + Condutor:
+Você está **preparando a casa**. Sua missão é deixar o repositório pronto para o fluxo Spec Kit + Condutor:
 
 1. remover qualquer harness ou esquema de especificação antigo;
 2. fazer uma instalação limpa e verificada do Spec Kit, para **Claude Code e Codex**;
@@ -49,7 +49,7 @@ test -f docs/fluxo/00-convencoes.md      # pasta do fluxo copiada pelo André
 grep -q 'dev-workflow:inicio' AGENTS.md  # bloco do fluxo instalado pelo 04
 ```
 
-- Sem `docs/fluxo/` ou sem o bloco `dev-workflow` no `AGENTS.md`: **pare** e peça ao André para instalar o fluxo primeiro com o `04-atualizar-fluxo.md` do repositório central (guia 09).
+- Sem `docs/fluxo/` ou sem o bloco `dev-workflow` no `AGENTS.md`: **pare** e peça ao André para instalar o fluxo primeiro com o `04-preparador.md` do repositório central (guia 09).
 
 - Árvore suja: **pare** e peça ao humano para commitar ou descartar as mudanças.
 - Sem `uv`: instale (`curl -LsSf https://astral.sh/uv/install.sh | sh`).
