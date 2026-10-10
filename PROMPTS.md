@@ -1,15 +1,28 @@
 # Prompts
 
-Os prompts que o André cola no Traycer. Cada um é uma linha: o agente lê o arquivo indicado e segue as instruções.
+## O prompt (sempre este)
 
-| # | Quando | Onde colar | Prompt | Arquivo |
-|---|---|---|---|---|
-| 1 | **Começar ou atualizar** um projeto (novo, existente ou com fluxo antigo) | Agente novo, na pasta do repositório do cliente | `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório.` | [`docs/fluxo/04-atualizar-fluxo.md`](docs/fluxo/04-atualizar-fluxo.md) |
-| 2 | **Trabalhar** nas issues, uma por vez, com você testando | Agente novo (Terra Medium) | `Siga docs/fluxo/02-condutor.md. Modo: manual` | [`docs/fluxo/02-condutor.md`](docs/fluxo/02-condutor.md) |
-| 3 | **Preparar um lote** de issues (spec, plano, tarefas) e responder as perguntas de uma vez | Agente novo (Terra Medium) | `Siga docs/fluxo/02-condutor.md. Modo: preparar` | idem |
-| 4 | **Deixar rodando** (à noite): fila inteira, relatório no fim | Agente novo (Terra Medium) | `Siga docs/fluxo/02-condutor.md. Modo: automático` | idem |
-| 5 | **Ajuste visual** conversado, sem spec | Agente novo | `Siga docs/fluxo/03-visual.md. Assunto: <o que vamos ajustar>` | [`docs/fluxo/03-visual.md`](docs/fluxo/03-visual.md) |
+Num **agente novo** do Traycer (Terra Medium), na pasta principal do repositório do cliente — projeto novo, existente, com fluxo antigo ou no dia a dia:
 
-O prompt 1 é o único que usa o link do repositório central: ele instala ou atualiza o fluxo, prepara a casa e planeja. Depois dele, os prompts 2 a 5 usam os arquivos que ele copiou para o projeto.
+```
+Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual
+```
 
-Os demais arquivos de `docs/fluxo/` não são colados por você: a preparação (`01-preparacao-da-casa.md`) é chamada pelo prompt 1, e os papéis (`papeis/01-especificador.md` … `09-verificador.md`) são lidos pelos agentes que o Condutor cria.
+O **00 Condutor** abre a sessão conferindo a casa. Se o fluxo não está instalado ou está desatualizado, se a preparação falta ou se não há roadmap, ele mostra o diagnóstico e cria o agente `Preparador`, que resolve com você (PRs, perguntas da stack, time do Linear, roadmap). Com a casa pronta, ele monta o time e leva as issues, uma por vez.
+
+| Modo | Troque o final por | Quando |
+|---|---|---|
+| manual | `Modo: manual` | Primeiro uso e dia a dia: você testa e mescla cada issue |
+| preparar | `Modo: preparar` | Lote de issues até o plano e as tarefas, perguntas juntas |
+| automático | `Modo: automático` | À noite: fila inteira e relatório. Exige a casa pronta |
+
+## Fora do Condutor
+
+Ajuste visual conversado, sem spec (agente novo):
+```
+Siga docs/fluxo/03-visual.md. Assunto: <o que vamos ajustar>
+```
+
+## Os outros arquivos
+
+Você não cola nenhum outro arquivo. O `04-atualizar-fluxo.md` é executado pelo `Preparador`, o `01-preparacao-da-casa.md` é chamado por ele, e os `papeis/01…09` são lidos pelos agentes do time que o Condutor monta.

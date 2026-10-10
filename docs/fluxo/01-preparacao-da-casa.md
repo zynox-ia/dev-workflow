@@ -2,7 +2,7 @@
 
 > Rode **uma vez por projeto** (e de novo só quando quiser reinstalar ou atualizar o Spec Kit).
 > Agente único, no Traycer, na pasta raiz do repositório do cliente.
-> Normalmente é o **prompt mestre** (`04-atualizar-fluxo.md`) quem chama este arquivo, inteiro ou só as fases pendentes. **Chamado pelo mestre:** não crie branch (use a dele), não abra PR na Fase 6 (só complete o `preparacao.md`) e pule a Fase 7: o mestre continua.
+> Normalmente é o **Preparador** (`04-atualizar-fluxo.md`, criado pelo 00 Condutor) quem chama este arquivo, inteiro ou só as fases pendentes. **Chamado pelo Preparador:** não crie branch (use a dele), não abra PR na Fase 6 (só complete o `preparacao.md`) e pule a Fase 7: o Preparador continua.
 > Só depois que o PR desta preparação for mesclado é que o **Condutor** (`02-condutor.md`) pode rodar.
 > Siga `docs/fluxo/00-convencoes.md` para nomes, status e labels.
 
@@ -338,5 +338,5 @@ Complete o `preparacao.md` com o log de todas as fases e responda ao humano com 
 4. Termine com:
    ```
    ✅ Casa pronta. Para trabalhar, num agente novo:
-   Siga docs/fluxo/02-condutor.md. Modo: manual
+   Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual
    ```

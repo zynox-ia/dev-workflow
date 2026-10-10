@@ -17,9 +17,9 @@ Fluxo de desenvolvimento com agentes de IA: convenções, prompts, skills e docu
 
 Num agente novo do Traycer, na pasta do projeto do cliente (sempre pelo link, nunca a cópia local):
 ```
-Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório.
+Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual
 ```
-O **prompt mestre** lê o repositório, mostra um diagnóstico e faz só o que falta:
+Um prompt só, sempre o do **00 Condutor**, em qualquer situação: projeto novo, projeto existente, fluxo antigo ou dia a dia. Na abertura ele faz o diagnóstico e, se algo falta, cria o agente `Preparador`, que faz só o necessário:
 
 | Etapa | Não existe | Existe |
 |---|---|---|
@@ -27,7 +27,7 @@ O **prompt mestre** lê o repositório, mostra um diagnóstico e faz só o que f
 | Casa (Spec Kit, constituição, comandos, ambiente, Linear) | Prepara do zero | Refaz só as fases que falham |
 | Planejamento | Planeja o roadmap | Audita: onde estamos e o que vem |
 
-Fluxo e casa saem num PR único; o roadmap, em outro. Ele para só no plano de ação, nas suas respostas e nos merges. O mesmo prompt serve para projeto novo, projeto existente e atualização.
+Fluxo e casa saem num PR único; o roadmap, em outro. Com a casa pronta, o próprio Condutor segue para as issues, uma por vez. Troque `manual` por `preparar` ou `automático` (o automático não instala nem prepara: exige a casa pronta).
 
 ## Contribuir
 
