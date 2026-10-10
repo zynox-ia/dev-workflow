@@ -2,6 +2,7 @@
 
 Fluxo de desenvolvimento com agentes de IA: convenções, prompts, skills e documentação usados em todos os repositórios de clientes.
 
+- **Prompts para colar no Traycer:** [`PROMPTS.md`](PROMPTS.md)
 - **Documentação:** [`docs/README.md`](docs/README.md)
 - **Versão atual:** [`docs/fluxo/VERSION`](docs/fluxo/VERSION) · [Changelog](docs/fluxo/CHANGELOG.md)
 
