@@ -46,13 +46,17 @@ Backlog → Ready → In Progress → In Review → Verifying → Done
 5. **Modo manual:** o 09 sobe o ambiente de teste e a issue vai para **Verifying**. Você testa em `teste.localhost:3001` e faz o merge. **Modo automático:** o próprio Condutor mescla, exceto nos casos que exigem você (guia 07).
 6. O Condutor limpa o ambiente, atualiza a develop em `develop.localhost:3000` e pega a próxima issue.
 
-## Os três jeitos de trabalhar com o Condutor
+## Um prompt só: o Condutor
+
+Você cola sempre o mesmo prompt, num agente novo (Terra Medium), na pasta do repositório. Na abertura, o Condutor confere a casa: se o fluxo não está instalado ou está desatualizado, se a preparação falta ou se não há roadmap, ele mesmo resolve isso com você, seguindo o roteiro `04-preparador.md` (PRs e perguntas). Com a casa pronta, ele passa o turno para um Condutor de conversa limpa, que segue para as issues.
+
+## Os três modos
 
 | Modo | Quando usar | Comando |
 |---|---|---|
-| **manual** | No dia a dia, quando você está por perto | `Siga docs/fluxo/02-condutor.md. Modo: manual` |
-| **preparar** | Antes de deixar o automático rodando: ele faz 01 a 05 num lote e você responde todas as perguntas de uma vez | `Siga docs/fluxo/02-condutor.md. Modo: preparar` |
-| **automático** | Para a noite: ele vai pela fila sem parar e entrega um relatório | `Siga docs/fluxo/02-condutor.md. Modo: automático` |
+| **manual** | No dia a dia, quando você está por perto; também o primeiro uso num projeto | `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual` |
+| **preparar** | Antes de deixar o automático rodando: ele faz 01 a 05 num lote e você responde todas as perguntas de uma vez | `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: preparar` |
+| **automático** | Para a noite: ele vai pela fila sem parar e entrega um relatório | `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: automático` (exige a casa pronta) |
 
 Para ajustes visuais, sem spec, você conversa direto com um agente: `Siga docs/fluxo/03-visual.md. Assunto: <...>`.
 

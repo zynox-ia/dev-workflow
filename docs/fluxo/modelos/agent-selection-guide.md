@@ -1,7 +1,7 @@
 # Guia de seleção de agentes e modelos
 
 > Lido pelo Traycer antes de criar ou reconfigurar qualquer agente filho neste repositório.
-> Gerenciado por `docs/fluxo/04-atualizar-fluxo.md` (dev-workflow). Não edite no projeto: mude no repositório central.
+> Gerenciado por `docs/fluxo/04-preparador.md` (dev-workflow). Não edite no projeto: mude no repositório central.
 
 ## Regra
 

@@ -27,7 +27,7 @@ Usuário de teste (só desenvolvimento): <e-mail> · <senha de desenvolvimento>.
 - <Regras curtas que já valiam neste repositório, com evidência. Sem regras: remova esta seção.>
 <!-- projeto:fim -->
 
-<!-- dev-workflow:inicio · gerenciado por docs/fluxo/04-atualizar-fluxo.md; não edite neste projeto -->
+<!-- dev-workflow:inicio · gerenciado por docs/fluxo/04-preparador.md; não edite neste projeto -->
 ## Fluxo de trabalho
 
 Este repositório segue o dev-workflow. A regra completa está em `docs/fluxo/00-convencoes.md`; em conflito, ela vence este arquivo. Se você recebeu um papel (00 Condutor, 01 a 09 em `docs/fluxo/papeis/`, sessão visual), o arquivo do papel vale no que ele define, e este arquivo vale no resto.

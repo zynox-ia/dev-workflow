@@ -1,9 +1,7 @@
-# Prompt mestre — instalar ou atualizar, preparar e planejar (v7)
+# Roteiro de preparação — instalar ou atualizar, preparar e planejar (v9)
 
-> O primeiro e único prompt para colocar um repositório de cliente no fluxo, seja ele novo ou existente. André cola num **agente novo** do Traycer, na pasta principal do repositório:
-> ```
-> Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório.
-> ```
+> Executado pelo próprio **00 Condutor** na abertura, quando a casa não está pronta (`02-condutor.md`, seção 3.0). O André não cola este arquivo: o prompt dele é sempre o do Condutor.
+> O Condutor roda o Passo 0 (diagnóstico), mostra o plano, recebe o ok do André e segue daqui a partir do Passo 1.
 > Rode sempre a partir do central (o link do `raw` na `main`), nunca a cópia local de `docs/fluxo/`: a cópia local pode ser de uma versão antiga.
 > Repositório central (público): `https://github.com/zynox-ia/dev-workflow`
 
@@ -78,7 +76,7 @@ git ls-remote --tags --refs https://github.com/zynox-ia/dev-workflow.git | sed '
 TMP="$(mktemp -d)"
 git clone --quiet --depth 1 --branch v<versão> https://github.com/zynox-ia/dev-workflow.git "$TMP/fluxo"
 ```
-Se o `$TMP/fluxo/docs/fluxo/04-atualizar-fluxo.md` for diferente deste arquivo, **siga ele** a partir do Passo 3: é o 04 da versão alvo.
+Se o `$TMP/fluxo/docs/fluxo/04-preparador.md` for diferente deste arquivo, **siga ele** a partir do Passo 3: é o 04 da versão alvo.
 
 ## Passo 3 — Mostrar o que muda (antes de aplicar)
 - Leia em `$TMP/fluxo/docs/fluxo/CHANGELOG.md` as entradas entre a versão instalada e a alvo.
@@ -162,7 +160,7 @@ rm -rf "$TMP"
 Não abra o PR ainda: a etapa B entra na mesma branch.
 
 ## Passo 10 — Etapa B: preparar a casa
-Na **mesma branch** (ou em `chore/speckit-setup`, se a etapa A não teve nada), siga `docs/fluxo/01-preparacao-da-casa.md` **chamado pelo prompt mestre**:
+Na **mesma branch** (ou em `chore/speckit-setup`, se a etapa A não teve nada), siga `docs/fluxo/01-preparacao-da-casa.md` **a partir deste roteiro**:
 - **Casa não preparada** (`F1 pendente`): o 01 inteiro, da Fase 0 à Fase 5.
 - **Casa preparada com fases pendentes:** só as fases apontadas no diagnóstico (F2, F3, F4 ou F5), cada uma até o seu portão. A Fase 1 (limpeza do harness antigo) nunca roda de novo numa casa já preparada.
 - **Casa pronta:** nada.
@@ -185,6 +183,5 @@ Liste junto as **ações do André** que não são arquivo: configurações do L
 ```
 ✅ Casa pronta · fluxo v<versão>
 Fila: <issues em Ready, ou "mova para Ready o que vem primeiro">
-Para trabalhar, num agente novo (Terra Medium):
-Siga docs/fluxo/02-condutor.md. Modo: manual
 ```
+Volte ao `02-condutor.md`, seção 3.0, passo 3 (passar o turno e começar o trabalho). Para referência, o prompt do André é: `Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual`

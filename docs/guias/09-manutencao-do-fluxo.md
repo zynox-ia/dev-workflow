@@ -16,7 +16,7 @@ dev-workflow/
     └── fluxo/
         ├── VERSION              versão atual (ex.: 1.2.0)
         ├── CHANGELOG.md         o que mudou em cada versão e a ação necessária nos projetos
-        ├── 00-convencoes.md … 04-atualizar-fluxo.md
+        ├── 00-convencoes.md … 04-preparador.md
         ├── papeis/              01 Especificador … 09 Verificador
         ├── modelos/             AGENTS.md e agent-selection-guide.md (instalados nos projetos)
         ├── skills/              planejar-etapas, registrar-linear
@@ -51,9 +51,9 @@ Nunca edite `docs/fluxo/` direto num projeto: a mudança some na próxima atuali
 
 Num agente novo do Traycer, na pasta do projeto, **sempre com o link do central** (a cópia local do 04 é da versão antiga e não conhece as migrações novas):
 ```
-Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/04-atualizar-fluxo.md e siga as instruções neste repositório.
+Leia https://raw.githubusercontent.com/zynox-ia/dev-workflow/main/docs/fluxo/02-condutor.md e siga as instruções neste repositório. Modo: manual
 ```
-O **prompt mestre** lê o repositório, mostra um diagnóstico e faz só o que falta:
+Um prompt só, sempre o do **00 Condutor**, em qualquer situação: projeto novo, projeto existente, fluxo antigo ou dia a dia. Na abertura ele faz o diagnóstico e, se algo falta, executa ele mesmo o roteiro de preparação (`docs/fluxo/04-preparador.md`), fazendo só o necessário:
 
 | Etapa | Não existe | Existe |
 |---|---|---|
@@ -61,7 +61,7 @@ O **prompt mestre** lê o repositório, mostra um diagnóstico e faz só o que f
 | Casa (Spec Kit, constituição, comandos, ambiente, Linear) | Prepara do zero | Refaz só as fases que falham |
 | Planejamento | Planeja o roadmap | Audita: onde estamos e o que vem |
 
-Fluxo e casa saem num PR único; o roadmap, em outro. Ele para só no plano de ação, nas suas respostas e nos merges. O mesmo prompt serve para projeto novo, projeto existente e atualização.
+Fluxo e casa saem num PR único; o roadmap, em outro. Com a casa pronta, ele passa o turno para um Condutor de conversa limpa, que segue para as issues, uma por vez. Troque `manual` por `preparar` ou `automático` (o automático não instala nem prepara: exige a casa pronta).
 
 Na atualização, ele copia `docs/guias/` e `docs/fluxo/` da versão nova, reinstala só as skills do fluxo, atualiza o bloco do fluxo no `AGENTS.md` e executa as migrações `[04]`. Spec Kit, constituição, ambiente e Linear só são refeitos se o diagnóstico mostrar que a fase correspondente falha.
 
@@ -78,7 +78,7 @@ O arquivo tem dois blocos, marcados com comentários HTML:
 | Bloco | Conteúdo | Quem escreve |
 |---|---|---|
 | `projeto` | Uma linha sobre o sistema, a tabela de comandos (instalar, subir, migrations, lint, typecheck, testes) e as regras próprias do projeto | A preparação da casa (fase 4); depois, o time, quando um comando muda |
-| `dev-workflow` | Regras do fluxo: git, Spec Kit, qualidade, dados e segredos, Linear, onde está cada coisa | O `04-atualizar-fluxo`, a partir de `docs/fluxo/modelos/AGENTS.md`. Nunca editar no projeto |
+| `dev-workflow` | Regras do fluxo: git, Spec Kit, qualidade, dados e segredos, Linear, onde está cada coisa | O `04-preparador`, a partir de `docs/fluxo/modelos/AGENTS.md`. Nunca editar no projeto |
 
 **O que nunca entra:** descrição da arquitetura, mapa de pastas do código, resumo das features. Isso desatualiza rápido e gasta o contexto de todo agente em toda tarefa; cada agente lê o código que a sua tarefa exige. Limite: menos de 120 linhas.
 

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Este repositório é o **dev-workflow**: convenções, prompts, skills e guias do fluxo de desenvolvimento com agentes, copiados para os repositórios dos clientes pelo `docs/fluxo/04-atualizar-fluxo.md`. Aqui não há código de aplicação; o produto é a documentação.
+Este repositório é o **dev-workflow**: convenções, prompts, skills e guias do fluxo de desenvolvimento com agentes, copiados para os repositórios dos clientes pelo `docs/fluxo/04-preparador.md`. Aqui não há código de aplicação; o produto é a documentação.
 
 ## Estrutura
 
